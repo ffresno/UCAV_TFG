@@ -1,0 +1,99 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        
+        
+        <!-- FRONTEND  LOGIN DE USUARIOS -->
+        
+        <action name="Login">
+            <result>frontend/login/login.jsp</result>
+        </action>
+        
+        <action name="CheckLogin" class="tfg.ucav.actions.login.CheckLoginAction">
+                <result name="SUCCESS_ADMIN">backend/panelControl/dashboardAdmin.jsp</result>
+                <result name="SUCCES_STUDENT">backend/panelControl/dashboardStudent.jsp</result>
+                <result name="INPUT">frontend/login/login.jsp</result>
+        </action>
+        <action name="Logout" class="tfg.ucav.actions.login.CheckLoginAction" method="logout">  
+            <result name="SUCCESS" type="redirectAction">Login</result> 
+        </action> 
+        
+        <!-- END FRONTEND -> REGISTRO DE USUARIOS -->
+        
+        <!-- FRONTEND -> REGISTRO DE USUARIOS -->
+        <action name="RegistroUsuario">
+            <result>frontend/registro/registroUsuarioIndex.jsp</result>
+        </action>
+        
+        <action name="RegistroAction" class="tfg.ucav.actions.registro.RegistroAction" >
+            <result name="SUCCESS">frontend/registro/registroUsuarioSuccess.jsp</result> 
+            <result name="input">frontend/registro/registroUsuarioIndex.jsp</result>
+	</action>
+        
+        <!-- END FRONTEND -> REGISTRO USUARIOS -->
+        
+       
+        
+        
+        <!-- BACKEND --> 
+        <action name="DashboardAdmin">
+            <result>backend/panelControl/dashboardAdmin.jsp</result>
+        </action>
+        <action name="DashboardStudent">
+            <result>backend/panelControl/dashboardStudent.jsp</result>
+        </action>
+        <!-- BACKEND -> CONFIGURACIÓN --> 
+        <!-- BACKEND -> CONFIGURACIÓN - PROVINCIAS --> 
+        <action name="GestionProvincias" class="tfg.ucav.actions.configuracion.provincias.ProvinciasAction">
+            <result name="SUCCESS">backend/panelControl/provincias/provinciasIndex.jsp</result>
+            <result name="INPUT">backend/panelControl/provincias/provinciasIndex.jsp</result>
+        </action>
+        
+        <action name="ActualizarProvincia" class="tfg.ucav.actions.configuracion.provincias.ProvinciasAction" method="actualizarProvincia">
+             <result name="SUCCESS">backend/panelControl/provincias/provinciasIndex.jsp</result>
+             <result name="INPUT">backend/panelControl/provincias/provinciasIndex.jsp</result>
+        </action>
+        
+        <!-- BACKEND -> CONFIGURACIÓN - CURSOS --> 
+        <action name="GestionCursos" class="tfg.ucav.actions.configuracion.cursos.CursosAction">
+            <result name="SUCCESS">backend/panelControl/cursos/crudCursos.jsp</result>
+        </action>
+        <action name="NuevoCurso" class="tfg.ucav.actions.configuracion.cursos.CursosAction" method="newCurso">
+            <result name="SUCCESS" type="chain">GestionCursos</result>
+        </action>
+        <action name="BorrarCurso" class="tfg.ucav.actions.configuracion.cursos.CursosDeleteAction">
+            <result name="SUCCESS" type="chain">GestionCursos</result>
+        </action>
+        <action name="ActualizarCurso" class="tfg.ucav.actions.configuracion.cursos.CursosUpdateAction">
+            <result name="SUCCESS" type="chain">GestionCursos</result>
+        </action>
+       <!-- BACKEND -> CONFIGURACIÓN - USUARIOS --> 
+        <action name="GestionUsuarios" class="tfg.ucav.actions.configuracion.usuarios.UsuariosAction">
+            <result name="SUCCESS">backend/panelControl/users/manageUsersIndex.jsp</result>
+        </action>
+        <action name="BorrarUsuario" class="tfg.ucav.actions.configuracion.usuarios.UsuariosAction" method="borrarUsuario">
+            <result name="SUCCESS" type="chain">GestionUsuarios</result> 
+            <result name="INPUT" type="chain">GestionUsuarios</result>
+        </action>
+        <action name="NuevoUsuario" class="tfg.ucav.actions.configuracion.usuarios.UsuariosAction" method="nuevoUsuario">
+            <result name="SUCCESS" type="chain">GestionUsuarios</result>
+            <result name="INPUT" type="chain">GestionUsuarios</result>
+        </action>
+        <action name="ActualizarUsuario" class="tfg.ucav.actions.configuracion.usuarios.UsuariosAction" method="actualizarUsuario">
+            <result name="SUCCESS" type="chain">GestionUsuarios</result>
+            <result name="INPUT" type="chain">GestionUsuarios</result>
+        </action>
+        
+        
+         <action name="SolicitudAlumno">
+            <result>backend/solicitudes/solicitudAlumno.jsp</result>
+        </action>
+    </package>
+    
+    
+    
+</struts>
