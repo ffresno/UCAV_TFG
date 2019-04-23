@@ -99,7 +99,7 @@
   <div class="footer-copyright text-center py-3">
       © 2019 Trabajo realizado por 
     <a href="mailto:fernandofresno@gmail.com"> Fernando del Fresno García</a> (Pasarela adaptación al Grado - UCAV)
-    <br> Trabajo final para Desarrollo de Aplicaciones Web I y II
+    <br> Trabajo Fin de Grado
   </div>
   <!-- Copyright -->
 

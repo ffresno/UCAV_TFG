@@ -95,8 +95,8 @@
         </action>
         
         
-         <action name="SolicitudAlumno">
-            <result>backend/solicitudes/solicitudAlumno.jsp</result>
+         <action name="NuevaSolicitud" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="nuevaSolicitud">
+            <result name="SUCCESS" >backend/solicitudes/solicitudAlumno.jsp</result>
         </action>
     </package>
     

@@ -111,21 +111,21 @@
 								
 							<div class="card-body">
 								
-			<form >
+                                                    <form action="#" method="post" enctype="multipart/form-data" id="solicitud">
                                                                     <div class="row">
                                                                         <div class="col-md-6 mb-3">
-                                                                          <label for="validationServer01">Nombre <span class="text-danger">*</span></label>
-                                                                          <input type="text" class="form-control" id="validationServer01" placeholder="Escribe tu nombre" required>
+                                                                          <label>Nombre <span class="text-danger">*</span></label>
+                                                                          <input type="text" class="form-control" placeholder="Escribe tu nombre" name="nombre" data-parsley-trigger="change" data-parsley-length="[4, 50]" required/>
                                                                         </div>
                                                                         <div class="col-md-6 mb-3">
-                                                                          <label for="validationServer02">Apellidos <span class="text-danger">*</span> </label>
-                                                                          <input type="text" class="form-control" id="validationServer02" placeholder="Escribe tus apellidos" required>
+                                                                          <label>Apellidos <span class="text-danger">*</span> </label>
+                                                                          <input type="text" class="form-control" placeholder="Escribe tus apellidos" name="apellidos" data-parsley-trigger="change" data-parsley-length="[5, 100]" required/>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-md-6 mb-3">
-                                                                          <label for="validationServer01">D.N.I <span class="text-danger">*</span></label>
-                                                                          <input type="text" class="form-control" id="validationServer01" placeholder="D.N.I" required>
+                                                                          <label>D.N.I <span class="text-danger">*</span></label>
+                                                                          <input type="text" class="form-control" placeholder="D.N.I" name="dni" data-parsley-trigger="change" data-parsley-length="[1, 15]" required/>
                                                                         </div>
                                                                         <div class="col-md-6 mb-3">
                                                                           <label>Sexo <span class="text-danger">*</span></label>
@@ -137,50 +137,52 @@
 										 
                                                                     </div>
                             <div class="form-group">
-									<label for="inputAddress">Dirección <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+									<label>Dirección <span class="text-danger">*</span></label>
+									<input type="text" class="form-control" id="inputAddress" placeholder="Dirección" name="direccion" data-parsley-trigger="change" data-parsley-length="[1, 100]" required/>
 								  </div>
 								  <div class="form-row">
 									<div class="form-group col-md-6">
-									  <label for="inputCity">Ciudad <span class="text-danger">*</span></label>
-									  <input type="text" class="form-control" id="inputCity">
+									  <label>Ciudad <span class="text-danger">*</span></label>
+									  <input type="text" class="form-control" name="ciudad" data-parsley-trigger="change" data-parsley-length="[1, 100]" required/>
 									</div>
 									<div class="form-group col-md-4">
-									  <label for="inputState">Provincia <span class="text-danger">*</span></label>
+									  <label>Provincia <span class="text-danger">*</span></label>
 									  <select id="inputState" class="form-control">
 										<option selected>Elige...</option>
-										<option>...</option>
+                                                                                <s:iterator value="listProvincias" var="provincia" status="status">
+                                                                                    <option value="<s:property value="idProvincia"/>"><s:property value="nombre"/></option>
+                                                                                </s:iterator>
 									  </select>
 									</div>
 									<div class="form-group col-md-2">
-									  <label for="inputZip">C.Postal <span class="text-danger">*</span></label>
-									  <input type="text" class="form-control" id="inputZip">
+									  <label>C.Postal <span class="text-danger">*</span></label>
+									  <input type="text" class="form-control" name="codigopostal" data-parsley-trigger="change" data-parsley-length="[1, 6]" required/>
 									</div>
 								  </div>
                                                                     <div class="form-row">
                                                                                 <div class="form-group col-md-6">
-                                                                                  <label for="inputCity">Pais <span class="text-danger">*</span></label>
-                                                                                  <input type="text" class="form-control" id="Pais">
+                                                                                  <label>Pais <span class="text-danger">*</span></label>
+                                                                                  <input type="text" class="form-control" name="pais" data-parsley-trigger="change" data-parsley-length="[1, 50]" required/>
                                                                                 </div>
                                                                                 <div class="form-group col-md-6">
-                                                                                  <label for="inputCity">Nacionalidad <span class="text-danger">*</span></label>
-                                                                                  <input type="text" class="form-control" id="Nacionalidad">
+                                                                                  <label>Nacionalidad <span class="text-danger">*</span></label>
+                                                                                  <input type="text" class="form-control" name="nacionalidad" data-parsley-trigger="change" data-parsley-length="[1, 100]" required/>
                                                                                 </div>
                                                                           </div>
                                                                   <div class="form-row">
                                                                                 <div class="form-group col-md-6">
-                                                                                    <label for="inputCity">Teléfono 1 <span class="text-danger">*</span></label>
-                                                                                  <input type="text" class="form-control" id="telefono1">
+                                                                                    <label>Teléfono 1 <span class="text-danger">*</span></label>
+                                                                                  <input type="text" class="form-control" name="telefono1" data-parsley-trigger="change" data-parsley-length="[1, 12]" required/>
                                                                                 </div>
                                                                                 <div class="form-group col-md-6">
-                                                                                  <label for="inputCity">Teléfono 2</label>
-                                                                                  <input type="text" class="form-control" id="telefono2">
+                                                                                  <label>Teléfono 2</label>
+                                                                                  <input type="text" class="form-control" name="telefono2" data-parsley-trigger="change" data-parsley-length="[1, 12]" required/>
                                                                                 </div>
                                                                           </div>
                                                                   <div class="form-row">
                                                                       <div class="form-group col-md-12">
-                                                                            <label for="inputCity">Email</label>
-                                                                            <input type="email" class="form-control" id="email" placeholder="Email">
+                                                                            <label>Email</label>
+                                                                            <input type="email" class="form-control" id="email" placeholder="Email" value="${appUser.email} " disabled>
                                                                       </div>
 								  </div>
 							</div>		
@@ -203,20 +205,15 @@
 							
 								  <fieldset class="form-group">
 									<div class="row">
-									  <div class="col-sm-10">
-										<div class="form-check">
-										  <label class="form-check-label">
-											<input class="form-check-input" type="radio" name="cursos" id="gridRadios1" value="option1" checked>
-											Ciclo formativo 1
-										  </label>
-										</div>
-										<div class="form-check">
-										  <label class="form-check-label">
-											<input class="form-check-input" type="radio" name="cursos" id="gridRadios2" value="option2">
-											Ciclo formativo 2
-										  </label>
-										</div>
-									  </div>
+                                                                            <div class="col-sm-10">
+                                                                                <s:iterator value="listCursos" var="curso" status="status">
+                                                                                    <div class="form-check">
+                                                                                        <label class="form-check-label">
+                                                                                            <input class="form-check-input" type="radio" name="curso" value="<s:property value="idCurso"/>" required><s:property value="nombre"/>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </s:iterator>
+                                                                            </div>
 									</div>
 								  </fieldset>
 								  <div class="form-group row">
@@ -304,10 +301,24 @@
 
 
 <!-- BEGIN Java Script for this page -->
-<script src="assets/js/jquery.scrollTo.min.js"></script>
-<script src="assets/plugins/switchery/switchery.min.js"></script>
 <s:include value="../../includes/js.jsp"/>
+<script src="assets/js/parsley.min.js"></script>
+<script src="assets/js/es/es.js"></script>
 <!-- END Java Script for this page -->
+
+
+<script>
+            
+            // START CODE Individual column searching (text inputs) DATA TABLE 		
+            $(document).ready(function () {
+                // Setup - add a text input to each footer cell
+                // DataTable
+                $('#solicitud').parsley();
+                
+                
+            });
+            // END CODE Individual column searching (text inputs) DATA TABLE 	 	
+        </script>
 
 </body>
 </html>

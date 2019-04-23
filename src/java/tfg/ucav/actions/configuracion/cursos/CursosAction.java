@@ -23,6 +23,7 @@ import tfg.ucav.model.configuracion.cursos.Curso;
 public class CursosAction extends ActionSupport {
     
     ArrayList<Curso> listCursos=new ArrayList<Curso>(); 
+    CursosDAO cursoDAO = null;
 
     public ArrayList<Curso> getListCursos() {
         return listCursos;
@@ -37,48 +38,23 @@ public class CursosAction extends ActionSupport {
     @Override
     public String execute() throws Exception {
  
-        //open context
-        Context ctx = new InitialContext();
-        if ( ctx == null ) throw new Exception("Error al cargar el contexto");
-        //DataSource y connection
-        DataSource pool;
-        pool = (DataSource)ctx.lookup("java:/comp/env/jdbc/ConexionMySQL");
-        Connection conn = pool.getConnection();
+        cursoDAO = new CursosDAO();
         
-        this.setListCursos(fetchCursos(conn));
+        this.setListCursos(cursoDAO.getCursos());
         
-        conn.close();
+        
         //return success
         return "SUCCESS";
         
     }
     
-    public ArrayList<Curso> fetchCursos ( Connection conn ) throws Exception {
-    //Statements and execute query
-        Statement stmt = conn.createStatement();
-        String query = "SELECT * FROM CURSO";
-        
-        ResultSet rs = stmt.executeQuery(query);
-        
-        while (rs.next()) {
-            Curso curso = new Curso();
-            curso.setIdCurso(rs.getInt("ID_CURSO"));
-            curso.setNombre(rs.getString("NOMBRE"));
-            listCursos.add(curso);
-        } 
-        
-        //Close 
-        rs.close();
-        stmt.close();
-        
-        return listCursos;
-    }
+    
     
     
     private String nombre;
     private String msg = "";
     private int intReturnValue = 0;
-    CursosDAO cursoDAO = null;
+    
     
     public int getIntReturnValue() {
         return intReturnValue;

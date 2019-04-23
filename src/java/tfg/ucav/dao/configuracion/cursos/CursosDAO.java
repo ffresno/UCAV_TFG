@@ -10,9 +10,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import tfg.ucav.model.configuracion.cursos.Curso;
 /**
  *
  * @author fernandofresno
@@ -116,6 +119,32 @@ public class CursosDAO {
             }
         }
     }
+    
+    public ArrayList<Curso> getCursos () throws Exception {
+         ArrayList<Curso> listCursos=new ArrayList<Curso>(); 
+         ResultSet rs = null;
+        try {
+            String sql = "SELECT * FROM CURSO";
+            PreparedStatement ps = myconnection().prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            while (rs.next()) {
+                Curso curso = new Curso();
+                curso.setIdCurso(rs.getInt("ID_CURSO"));
+                curso.setNombre(rs.getString("NOMBRE"));
+                listCursos.add(curso);
+            } 
+            return listCursos;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (myconnection() != null) {
+                myconnection().close();
+                rs.close();
+            }
+        }
+    }
+    
     
     /** 
     * Método que actualiza un nuevo elemento de la tabla en BD

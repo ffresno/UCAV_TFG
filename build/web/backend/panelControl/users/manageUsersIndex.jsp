@@ -385,7 +385,7 @@
                 
             });
             // END CODE Individual column searching (text inputs) DATA TABLE 	 	
-        </script>	
+        </scriptc	
         <!-- END Java Script for this page -->
 
         

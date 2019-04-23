@@ -23,7 +23,7 @@
                     href="DashboardStudent"><i class="fa fa-fw fa-home"></i> <span> Inicio </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
                         <li><a href="DashboardStudent">Mis Solicitudes</a></li>
-                        <li><a href="SolicitudAlumno">Nueva Solicitud</a></li>
+                        <li><a href="NuevaSolicitud">Nueva Solicitud</a></li>
                         
                     </ul>
                 </li>
