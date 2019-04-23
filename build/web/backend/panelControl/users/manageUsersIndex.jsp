@@ -118,7 +118,7 @@
                                                     <form action="NuevoUsuario" method="post" enctype="multipart/form-data" id="nuevoUsuario">
 
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Añadir usuario</h5>
+                                                            <h5 class="modal-title">Añadir usuarios</h5>
                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>          	
                                                         </div>
 

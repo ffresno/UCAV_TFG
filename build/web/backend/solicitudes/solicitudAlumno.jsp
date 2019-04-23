@@ -26,6 +26,33 @@
         <!-- INCLUDE CSS for this page -->
         <s:include value = "../../includes/headerCss.jsp"/>
         <!-- END CSS for this page -->
+        <style>
+		.parsley-error {
+			border-color: #ff5d48 !important;
+		}
+		.parsley-errors-list.filled {
+			display: block;
+		}
+		.parsley-errors-list {
+			display: none;
+			margin: 0;
+			padding: 0;
+		}
+		.parsley-errors-list > li {
+			font-size: 12px;
+			list-style: none;
+			color: #ff5d48;
+			margin-top: 5px;
+		}
+		.form-section {
+			padding-left: 15px;
+			border-left: 2px solid #FF851B;
+			display: none;
+		}
+		.form-section.current {
+			display: inherit;
+		}
+        </style>
 				
 </head>
 
@@ -48,21 +75,21 @@
 		<!-- Start content -->
         <div class="content">
             
-			<div class="container-fluid">
+            <div class="container-fluid">
 
-					
-										<div class="row">
-					<div class="col-xl-12">
-							<div class="breadcrumb-holder">
-                                    <h1 class="main-title float-left">Nueva solicitud</h1>
-                                    <ol class="breadcrumb float-right">
-										<li class="breadcrumb-item">Inicio</li>
-										<li class="breadcrumb-item active">Nueva solicitud</li>
-                                    </ol>
-                                    <div class="clearfix"></div>
-                            </div>
-					</div>
-			</div>
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="breadcrumb-holder">
+                            <h1 class="main-title float-left">Nueva solicitud</h1>
+                            <ol class="breadcrumb float-right">
+                                <li class="breadcrumb-item">Inicio</li>
+                                <li class="breadcrumb-item active">Nueva solicitud</li>
+                            </ol>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
             <!-- end row -->
 
             
@@ -84,7 +111,7 @@
 								
 							<div class="card-body">
 								
-			<form>
+			<form >
                                                                     <div class="row">
                                                                         <div class="col-md-6 mb-3">
                                                                           <label for="validationServer01">Nombre <span class="text-danger">*</span></label>
