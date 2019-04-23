@@ -166,7 +166,7 @@
                                                                             </div>             
 
                                                                             <div class="modal-footer">
-                                                                                <input type="hidden" name="id" value="${provincia.idProvincia}" />
+                                                                                <input type="hidden" name="idProvincia" value="${provincia.idProvincia}" />
                                                                                 <button type="submit" class="btn btn-primary">Guardar</button>
                                                                             </div>
 
@@ -189,8 +189,8 @@
                                             function deleteRecord(id)
                                             {
                                                 if (confirm('¿Estás seguro que quieres borrar el elemento?')) {
-                                                    alert('No implementado');
-                                                    window.location.href = '#?id='+id;
+                                       
+                                                    window.location.href = 'BorrarProvincia?idProvincia='+id;
                                                 }
                                             }
                                         </script>

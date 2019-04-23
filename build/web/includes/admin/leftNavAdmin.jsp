@@ -39,7 +39,7 @@
                         <li><a href="GestionCursos">Cursos</a></li>
                         <li><a href="CRUDAsignaturas">Asignaturas</a></li>
                         <li><a href="GestionUsuarios">Usuarios</a></li>
-                        <li><a href="GestionProvincias">Provincias</a></li>
+                        <li><a href="GestionProvincias">Provincias (hibernate) </a></li>
                         <li><a href="tree-view.html">Tree View</a></li>
                         <li><a href="sweetalert.html">SweetAlert</a></li>
                         <li><a href="calendar.html">Calendar</a></li>

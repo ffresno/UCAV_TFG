@@ -46,7 +46,7 @@ public class ProvinciasDAO {
         
         try{
             tx = session.beginTransaction();
-            String query = "FROM Provincias";
+            String query = "FROM Provincias ORDER BY NOMBRE";
             listProvincias = session.createQuery(query).list(); 
             tx.commit();
           } catch (HibernateException e) {
@@ -81,7 +81,25 @@ public class ProvinciasDAO {
       }
    }
     
+    public int deleteProvincia(int id){
+        
+      Session session = myConnectionHibernate();
+      Transaction tx = null;
       
+      try {
+         tx = session.beginTransaction();
+         Provincias provincia = (Provincias) session.get(Provincias.class, id);
+         session.delete(provincia); 
+         tx.commit();
+         return 1;
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+         return 0;
+      } finally {
+         session.close(); 
+      }
+   }
     
 }
 

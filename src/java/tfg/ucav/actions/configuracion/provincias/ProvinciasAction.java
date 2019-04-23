@@ -98,4 +98,23 @@ public class ProvinciasAction extends ActionSupport {
         return "SUCCESS";
     }
     
+    
+    public String borrarProvincia() {
+        
+        ProvinciasDAO provinciasDAO = new ProvinciasDAO();
+
+        try {
+            this.setIntReturnValue(provinciasDAO.deleteProvincia(this.getIdProvincia()));
+            if ( this.getIntReturnValue() > 0 ) {
+               this.setMsg("Elemento borrado correctamente");
+            } else {
+               this.setMsg("Error borrando el elemento");
+               return "INPUT";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "SUCCESS";
+        
+    }
 }

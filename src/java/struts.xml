@@ -37,6 +37,7 @@
         <!-- END FRONTEND -> REGISTRO USUARIOS -->
         
        
+        <!-- comentarios -->
         
         
         <!-- BACKEND --> 
@@ -54,8 +55,13 @@
         </action>
         
         <action name="ActualizarProvincia" class="tfg.ucav.actions.configuracion.provincias.ProvinciasAction" method="actualizarProvincia">
-             <result name="SUCCESS">backend/panelControl/provincias/provinciasIndex.jsp</result>
-             <result name="INPUT">backend/panelControl/provincias/provinciasIndex.jsp</result>
+             <result name="SUCCESS" type="chain">GestionProvincias</result>
+             <result name="INPUT" type="chain">GestionProvincias</result>
+        </action>
+        
+        <action name="BorrarProvincia" class="tfg.ucav.actions.configuracion.provincias.ProvinciasAction" method="borrarProvincia">
+             <result name="SUCCESS" type="chain">GestionProvincias</result>
+             <result name="INPUT" type="chain">GestionProvincias</result>
         </action>
         
         <!-- BACKEND -> CONFIGURACIÓN - CURSOS --> 
