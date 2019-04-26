@@ -98,6 +98,10 @@
          <action name="NuevaSolicitud" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="nuevaSolicitud">
             <result name="SUCCESS" >backend/solicitudes/solicitudAlumno.jsp</result>
         </action>
+        <action name="GuardarSolicitud" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="guardarSolicitud">
+            <result name="SUCCESS" >backend/solicitudes/solicitudAlumno.jsp</result>
+        </action>
+            
     </package>
     
     

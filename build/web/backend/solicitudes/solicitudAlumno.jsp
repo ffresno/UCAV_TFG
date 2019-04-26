@@ -92,194 +92,195 @@
                 </div>
             <!-- end row -->
 
-            
+            <!--
 			<div class="alert alert-success" role="alert">
 					  <h4 class="alert-heading">Solicitud</h4>
 					  <p>Completa los datos de la matrícula para empezar a introducir los documentos.
                                           </p>
 			</div>
+            -->
 
-			
-			<div class="row">
-			
+            <form action="GuardarSolicitud" method="post" enctype="multipart/form-data" id="solicitud">
+                <div class="row">
+
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">						
-						<div class="card mb-3">
-							<div class="card-header">
-								<h3><i class="fa fa-check-square-o"></i> Datos Personales</h3>
-								Completa tus datos personales para que podamos recoger correctamente tu solicitud
-							</div>
-								
-							<div class="card-body">
-								
-                                                    <form action="#" method="post" enctype="multipart/form-data" id="solicitud">
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 mb-3">
-                                                                          <label>Nombre <span class="text-danger">*</span></label>
-                                                                          <input type="text" class="form-control" placeholder="Escribe tu nombre" name="nombre" data-parsley-trigger="change" data-parsley-length="[4, 50]" required/>
-                                                                        </div>
-                                                                        <div class="col-md-6 mb-3">
-                                                                          <label>Apellidos <span class="text-danger">*</span> </label>
-                                                                          <input type="text" class="form-control" placeholder="Escribe tus apellidos" name="apellidos" data-parsley-trigger="change" data-parsley-length="[5, 100]" required/>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-6 mb-3">
-                                                                          <label>D.N.I <span class="text-danger">*</span></label>
-                                                                          <input type="text" class="form-control" placeholder="D.N.I" name="dni" data-parsley-trigger="change" data-parsley-length="[1, 15]" required/>
-                                                                        </div>
-                                                                        <div class="col-md-6 mb-3">
-                                                                          <label>Sexo <span class="text-danger">*</span></label>
-                                                                          <div>
-                                                                            Hombre: <input type="radio" name="sexo" value="hombre" checked>
-                                                                            Mujer: <input type="radio" name="sexo" value="mujer">
-                                                                          </div>
-                                                                        </div>
-										 
-                                                                    </div>
-                            <div class="form-group">
-									<label>Dirección <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="inputAddress" placeholder="Dirección" name="direccion" data-parsley-trigger="change" data-parsley-length="[1, 100]" required/>
-								  </div>
-								  <div class="form-row">
-									<div class="form-group col-md-6">
-									  <label>Ciudad <span class="text-danger">*</span></label>
-									  <input type="text" class="form-control" name="ciudad" data-parsley-trigger="change" data-parsley-length="[1, 100]" required/>
-									</div>
-									<div class="form-group col-md-4">
-									  <label>Provincia <span class="text-danger">*</span></label>
-									  <select id="inputState" class="form-control">
-										<option selected>Elige...</option>
-                                                                                <s:iterator value="listProvincias" var="provincia" status="status">
-                                                                                    <option value="<s:property value="idProvincia"/>"><s:property value="nombre"/></option>
-                                                                                </s:iterator>
-									  </select>
-									</div>
-									<div class="form-group col-md-2">
-									  <label>C.Postal <span class="text-danger">*</span></label>
-									  <input type="text" class="form-control" name="codigopostal" data-parsley-trigger="change" data-parsley-length="[1, 6]" required/>
-									</div>
-								  </div>
-                                                                    <div class="form-row">
-                                                                                <div class="form-group col-md-6">
-                                                                                  <label>Pais <span class="text-danger">*</span></label>
-                                                                                  <input type="text" class="form-control" name="pais" data-parsley-trigger="change" data-parsley-length="[1, 50]" required/>
-                                                                                </div>
-                                                                                <div class="form-group col-md-6">
-                                                                                  <label>Nacionalidad <span class="text-danger">*</span></label>
-                                                                                  <input type="text" class="form-control" name="nacionalidad" data-parsley-trigger="change" data-parsley-length="[1, 100]" required/>
-                                                                                </div>
-                                                                          </div>
-                                                                  <div class="form-row">
-                                                                                <div class="form-group col-md-6">
-                                                                                    <label>Teléfono 1 <span class="text-danger">*</span></label>
-                                                                                  <input type="text" class="form-control" name="telefono1" data-parsley-trigger="change" data-parsley-length="[1, 12]" required/>
-                                                                                </div>
-                                                                                <div class="form-group col-md-6">
-                                                                                  <label>Teléfono 2</label>
-                                                                                  <input type="text" class="form-control" name="telefono2" data-parsley-trigger="change" data-parsley-length="[1, 12]" required/>
-                                                                                </div>
-                                                                          </div>
-                                                                  <div class="form-row">
-                                                                      <div class="form-group col-md-12">
-                                                                            <label>Email</label>
-                                                                            <input type="email" class="form-control" id="email" placeholder="Email" value="${appUser.email} " disabled>
-                                                                      </div>
-								  </div>
-							</div>		
-								  
-								  
-																				
-						</div><!-- end card-->					
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h3><i class="fa fa-check-square-o"></i> Datos Personales</h3>
+                                Completa tus datos personales para que podamos recoger correctamente tu solicitud
+                            </div>
+
+                            <div class="card-body">
+
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label>Nombre <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Escribe tu nombre" name="nombre" data-parsley-trigger="change" data-parsley-length="[4, 50]" required/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Apellidos <span class="text-danger">*</span> </label>
+                                        <input type="text" class="form-control" placeholder="Escribe tus apellidos" name="apellidos" data-parsley-trigger="change" data-parsley-length="[5, 100]" required/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label>D.N.I <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="D.N.I" name="dni" data-parsley-trigger="change" data-parsley-length="[1, 15]" required/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Sexo <span class="text-danger">*</span></label>
+                                        <div>
+                                            Hombre: <input type="radio" name="sexohombre" value="true" checked>
+                                            Mujer: <input type="radio" name="sexohombre" value="false">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Dirección <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Dirección" name="direccion" data-parsley-trigger="change" data-parsley-length="[1, 100]" required/>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Ciudad <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="ciudad" data-parsley-trigger="change" data-parsley-length="[1, 100]" required/>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label>Provincia <span class="text-danger">*</span></label>
+                                        <select id="inputState" class="form-control" required name="idProvincia">
+                                            <option value="">Elige...</option>
+                                            <s:iterator value="listProvincias" var="provincia" status="status">
+                                                <option value="<s:property value="idProvincia"/>"><s:property value="nombre"/></option>
+                                            </s:iterator>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>C.Postal <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="codigoPostal" data-parsley-trigger="change" data-parsley-length="[1, 6]" required/>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Pais <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="pais" data-parsley-trigger="change" data-parsley-length="[1, 50]" required/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Nacionalidad <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="nacionalidad" data-parsley-trigger="change" data-parsley-length="[1, 100]" required/>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Teléfono 1 <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="telefono1" data-parsley-trigger="change" data-parsley-length="[1, 12]" required/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Teléfono 2</label>
+                                        <input type="text" class="form-control" name="telefono2" data-parsley-trigger="change" data-parsley-length="[1, 12]"/>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Email" value="${appUser.email} " disabled>
+                                    </div>
+                                </div>
+                            </div>		
+
+
+                        </div><!-- end card-->					
                     </div>
-					
-					
-					
-					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">						
-						<div class="card mb-3">
-							<div class="card-header">
-								<h3><i class="fa fa-check-square-o"></i> Cursos disponibles</h3>
-								Seleccione el curso al que se desea matricular.
-							</div>
-								
-							<div class="card-body">
-							
-								  <fieldset class="form-group">
-									<div class="row">
-                                                                            <div class="col-sm-10">
-                                                                                <s:iterator value="listCursos" var="curso" status="status">
-                                                                                    <div class="form-check">
-                                                                                        <label class="form-check-label">
-                                                                                            <input class="form-check-input" type="radio" name="curso" value="<s:property value="idCurso"/>" required><s:property value="nombre"/>
-                                                                                        </label>
-                                                                                    </div>
-                                                                                </s:iterator>
-                                                                            </div>
-									</div>
-								  </fieldset>
-								  <div class="form-group row">
-									<div class="col-sm-10">
-									  <div class="form-check">
-										<label class="form-check-label">
-										  <input class="form-check-input" type="checkbox" disabled checked> Modalidad e-Learning
-										</label>
-									  </div>
-									</div>
-								  </div>
-                                                            <div class="form-group">
-									<label>Nº de Expediente <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="expediente" placeholder="Nº Expediente" required>
-									<small id="numberlHelp" class="form-text text-muted">xxxxxxxxxxxxx </small>
-								  </div>
-                                                                    <div class="form-group">
-									<label for="exampleInputEmail1">Estudios aportados <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="estudios" placeholder="Estudios" required>
-									<small id="numberlHelp" class="form-text text-muted">Introduce el titulo que aportas para poder acceder a este título</small>
-								  </div>
-								  <div class="form-group">
-									<label for="exampleInputEmail1">Centro de procedencia <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" id="procedencia" placeholder="Centro de procedencia" required>
-									<small id="numberlHelp" class="form-text text-muted">Introduce el Centro de procedencia de los estudios aportados</small>
-								  </div>
-								  <div class="form-check">
-									<label class="form-check-label">
-									  <input type="checkbox" class="form-check-input" name="primeravez">
-									  ¿Se matricula por primera vez en este centro?
-									</label>
-								  </div>
-                                                                    <div class="form-check">
-									<label class="form-check-label">
-									  <input type="checkbox" class="form-check-input" name="repite">
-									  ¿Repite el mismo curso?
-									</label>
-								  </div>
-                                                                    <div class="form-check">
-									<label class="form-check-label">
-									  <input type="checkbox" class="form-check-input" name="traslado">
-									  ¿Realiza traslado de matrícula?
-									</label>
-								  </div>
-                                                                    <div class="form-check">
-									<label class="form-check-label">
-									  <input type="checkbox" class="form-check-input" name="exento">
-                                                                          ¿Está exento de Seguro Escolar? <em>Mayores de 18 años exentos</em>
-                                    
-									</label>
-								  </div>
-                                                                    <p></p>
-								 
-								  <div class="form-group row">
-									<div class="col-sm-10">
-									  <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
-									</div>
-								  </div>
-								</form>
-								
-							</div>							
-						</div><!-- end card-->					
+
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">						
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h3><i class="fa fa-check-square-o"></i> Cursos disponibles</h3>
+                                Seleccione el curso al que se desea matricular.
+                            </div>
+
+                            <div class="card-body">
+
+                                <fieldset class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <s:iterator value="listCursos" var="curso" status="status">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input" type="radio" name="idCurso" value="<s:property value="idCurso"/>" required><s:property value="nombre"/>
+                                                    </label>
+                                                </div>
+                                            </s:iterator>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" disabled checked> Modalidad e-Learning
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nº de Expediente </label>
+                                    <input type="text" class="form-control" id="expediente" placeholder="Nº Expediente" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Estudios aportados <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="estudios" placeholder="Estudios" name="estudiosAportados" data-parsley-trigger="change" data-parsley-length="[1, 50]" required/>
+                                    <small class="form-text text-muted">Introduce el titulo que aportas para poder acceder a este título</small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Centro de procedencia <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="procedencia" placeholder="Centro de procedencia" name="centroProcedencia" data-parsley-trigger="change" data-parsley-length="[1, 100]"/>
+                                    <small class="form-text text-muted">Introduce el Centro de procedencia de los estudios aportados</small>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="primeraVez" id="primeraVez" value="false" onchange="javascript:setValueToCheckBox('primeraVez')">
+                                        ¿Se matricula por primera vez en este centro?
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="repiteCurso" id="repiteCurso" value="false" onchange="javascript:setValueToCheckBox('repiteCurso')">
+                                        ¿Repite el mismo curso?
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="trasladoMatricula" id="trasladoMatricula" value="false" onchange="javascript:setValueToCheckBox('trasladoMatricula')">
+                                        ¿Realiza traslado de matrícula?
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="exentoSeguro" id="exentoSeguro" value="false" onchange="javascript:setValueToCheckBox('exentoSeguro')">
+                                        ¿Está exento de Seguro Escolar? <em>Mayores de 18 años exentos</em>
+
+                                    </label>
+                                </div>
+                                <p></p>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                                    </div>
+                                </div>
+
+                            </div>							
+                        </div><!-- end card-->					
                     </div>
-					
-					
-			</div>
+
+
+                </div>
+
+            </form>
+
 
 
 
@@ -308,17 +309,29 @@
 
 
 <script>
-            
-            // START CODE Individual column searching (text inputs) DATA TABLE 		
-            $(document).ready(function () {
-                // Setup - add a text input to each footer cell
-                // DataTable
-                $('#solicitud').parsley();
-                
-                
-            });
-            // END CODE Individual column searching (text inputs) DATA TABLE 	 	
-        </script>
+    
+  
+    function setValueToCheckBox(name)  
+    {  
+        var checkbox = document.getElementById(name); 
+        if (checkbox.checked) {
+            checkbox.value = true;
+          } else {
+            checkbox.value = false;
+          }
+    }  
+
+
+    // START CODE Individual column searching (text inputs) DATA TABLE 		
+    $(document).ready(function () {
+        // Setup - add a text input to each footer cell
+        // DataTable
+        $('#solicitud').parsley();
+
+
+    });
+    // END CODE Individual column searching (text inputs) DATA TABLE 	 	
+</script>
 
 </body>
 </html>
