@@ -28,21 +28,6 @@
                     </ul>
                 </li>
 
-                <li class="submenu">
-                    <a href="#"><i class="fa fa-fw fa-th"></i> <span> Alumnos </span> <span class="menu-arrow"></span></a>
-                    <ul class="list-unstyled">
-                        <li><a href="MatriculaAlumno">Matriculación</a></li>
-                        <li><a href="star-rating.html">Mis Solicitudes</a></li>
-                        <li><a href="range-sliders.html">Range Sliders</a></li>
-                        <li><a href="tree-view.html">Tree View</a></li>
-                        <li><a href="sweetalert.html">SweetAlert</a></li>
-                        <li><a href="calendar.html">Calendar</a></li>
-                        <li><a href="gmaps.html">GMaps</a></li>
-                        <li><a href="counter-up.html">Counter-Up</a></li>
-                    </ul>
-                </li>
-                
-
             <div class="clearfix"></div>
 
         </div>

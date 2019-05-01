@@ -44,8 +44,8 @@
         <action name="DashboardAdmin">
             <result>backend/panelControl/dashboardAdmin.jsp</result>
         </action>
-        <action name="DashboardStudent">
-            <result>backend/panelControl/dashboardStudent.jsp</result>
+        <action name="DashboardStudent" class="tfg.ucav.actions.solicitudes.SolicitudesAction">
+            <result name="SUCCESS">backend/panelControl/dashboardStudent.jsp</result>
         </action>
         <!-- BACKEND -> CONFIGURACIÓN --> 
         <!-- BACKEND -> CONFIGURACIÓN - PROVINCIAS --> 

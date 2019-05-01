@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26-abr-2019 9:58:47 by Hibernate Tools 4.3.1 -->
+<!-- Generated 01-may-2019 20:02:45 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="tfg.ucav.model.configuracion.provincias.Provincias" table="PROVINCIAS" catalog="TFG_UCAV">
+    <class name="tfg.ucav.model.configuracion.provincias.Provincias" table="provincias" catalog="tfgucav">
         <id name="idProvincia" type="java.lang.Integer">
-            <column name="ID_PROVINCIA" />
+            <column name="id_provincia" />
             <generator class="identity"></generator>
         </id>
         <property name="nombre" type="string">
-            <column name="NOMBRE" length="50" not-null="true" />
+            <column name="nombre" length="50" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

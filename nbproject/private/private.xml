@@ -6,11 +6,11 @@
             <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/src/java/tfg/ucav/dao/solicitudes/SolicitudesDAO.java</file>
             <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/web/backend/solicitudes/solicitudAlumno.jsp</file>
             <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/src/java/tfg/ucav/model/solicitudes/SolicitudDetalle.java</file>
-            <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/src/java/tfg/ucav/model/solicitudes/Solicitudes.java</file>
-            <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/src/java/tfg/ucav/actions/solicitudes/SolicitudesAction.java</file>
+            <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/src/java/tfg/ucav/actions/configuracion/usuarios/UsuariosAction.java</file>
+            <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/src/java/tfg/ucav/dao/configuracion/usuarios/UsuariosDAO.java</file>
             <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/src/java/hibernate.cfg.xml</file>
             <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/src/java/struts.xml</file>
-            <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/src/java/tfg/ucav/model/solicitudes/solicitudes.reveng.xml</file>
+            <file>file:/Users/fernandofresno/Desktop/ADAPTACION%20GRADO/05_TRABAJO_OBLIGATORIO/01_DESARROLLO/TRABAJO/UCAV_TFG/web/backend/panelControl/users/manageUsersIndex.jsp</file>
         </group>
     </open-files>
 </project-private>

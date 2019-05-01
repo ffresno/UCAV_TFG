@@ -21,8 +21,8 @@
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>Registro de matrícula del Alumno</title>
+        
+        <title>Registro de solicitud del Alumno</title>
         <!-- INCLUDE CSS for this page -->
         <s:include value = "../../includes/headerCss.jsp"/>
         <!-- END CSS for this page -->

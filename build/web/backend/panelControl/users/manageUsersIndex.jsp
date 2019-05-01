@@ -93,7 +93,7 @@
                         <!-- end row -->
                         
                          
-                        <s:if test="intReturnValue">
+                        <s:if test="intReturnValue!=-1">
                             <s:if test="intReturnValue>0">
                                 <div class="alert alert-success" role="alert">
                                 <h4 class="alert-heading">Correcto!</h4>
@@ -385,7 +385,7 @@
                 
             });
             // END CODE Individual column searching (text inputs) DATA TABLE 	 	
-        </scriptc	
+        </script>	
         <!-- END Java Script for this page -->
 
         

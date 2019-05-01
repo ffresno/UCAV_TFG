@@ -37,8 +37,11 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
     String msg;
     List<Provincias> listProvincias = new ArrayList<>();
     List<Curso> cursosDisponibles = new ArrayList<>();
-    ArrayList<Curso> listCursos = new ArrayList<>(); 
+    ArrayList<Curso> listCursos = new ArrayList<>();  
     
+    List<Solicitudes> listSolicitudes = new ArrayList<>();
+    
+    SolicitudesDAO solicitudesDAO;
     ProvinciasDAO provinciasDAO;
     CursosDAO cursosDAO;
     
@@ -166,6 +169,14 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
 
     public void setCursosDisponibles(List<Curso> cursosDisponibles) {
         this.cursosDisponibles = cursosDisponibles;
+    }
+    
+    public List<Solicitudes> getListSolicitudes() {
+        return listSolicitudes;
+    }
+
+    public void setListSolicitudes(List<Solicitudes> solis) {
+        this.listSolicitudes = solis;
     }
 
     public ProvinciasDAO getProvinciasDAO() {
@@ -358,6 +369,23 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
         Connection conn = pool.getConnection();
         return conn;
     }
+    
+    /**
+     * Devuelve la lista de solicitudes por usuario
+     * @return
+     * @throws Exception 
+     */
+    @Override
+    public String execute() throws Exception {
+        User usuario = (User) session.get("appUser"); 
+        solicitudesDAO = new SolicitudesDAO();
+        this.setListSolicitudes(solicitudesDAO.getSolicitudesByUser(usuario.getIdUser()));
+        return "SUCCESS";
+        
+        //ejecutar el script y volver a generar las clases
+        
+    }
+    
     
     public String nuevaSolicitud () {
         

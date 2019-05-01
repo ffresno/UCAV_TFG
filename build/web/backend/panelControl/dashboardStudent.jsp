@@ -23,7 +23,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard - Esdudiantes</title>
+    <title>DashBoard - Estudiantes</title>
     <!-- INCLUDE CSS for this page -->
     <s:include value = "../../includes/headerCss.jsp"/>
     <!-- END CSS for this page -->
@@ -102,79 +102,29 @@
                                         <table id="solicitudes" class="table table-bordered table-hover display">
                                             <thead>
                                                 <tr>
-                                                    <th>Nombre y Apellidos</th>
-                                                    <th>email</th>
-                                                    <th>Nº Autorización</th>
-                                                    <th>Curso Escolar</th>
-                                                    <th>Estado</th>
+                                                    <th>#</th>
+                                                    <th>NOMBRE Y APELLIDOS</th>
+                                                    <th>CURSO SOLICITADO</th>
+                                                    <th>Nº EXPEDIENTE</th>
+                                                    <th>CURSO ESCOLAR</th>
+                                                    <th>ESTADO</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>									
                                             <tbody>
+                                                <s:iterator value="listSolicitudes" var="solicitud" status="status">
+                                                    <tr>
+                                                        <td>${status.count}</td>
+                                                        <td><s:property value="apellidos"/>, <s:property value="nombre"/></td>
+                                                            <td><s:property value="solicitudDetalles.idSolicitud"/><td>
+                                                        <td><td>
+                                                        <td>?????</td>
+                                                        
+                                                        <td>?????</td>
+                                                    </tr>
+                                                </s:iterator>
                                                 <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr><tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
+                                                    <td>?</td>
                                                     <td>Tiger Nixon</td>
                                                     <td>test@email.com</td>
                                                     <td>1111111</td>

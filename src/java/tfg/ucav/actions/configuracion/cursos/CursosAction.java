@@ -6,13 +6,7 @@
 package tfg.ucav.actions.configuracion.cursos;
 
 import com.opensymphony.xwork2.ActionSupport;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 import tfg.ucav.dao.configuracion.cursos.CursosDAO;
 import tfg.ucav.model.configuracion.cursos.Curso;
 
@@ -53,7 +47,7 @@ public class CursosAction extends ActionSupport {
     
     private String nombre;
     private String msg = "";
-    private int intReturnValue = 0;
+    private int intReturnValue = -1;
     
     
     public int getIntReturnValue() {

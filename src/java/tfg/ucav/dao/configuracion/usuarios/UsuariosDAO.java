@@ -42,9 +42,9 @@ public class UsuariosDAO {
         int i = 0; //return value
         
         try {
-            String sql =    "INSERT INTO USERS "
-                            + "(NOMBRE,APELLIDOS,EMAIL,PASSWORD, CREATE_TIME,ID_ROLE)"
-                            + " VALUES (?,?,?,?,?,?)";
+            String sql =    "INSERT INTO users "
+                            + "(nombre,apellidos,email,password,create_time,id_role)"
+                            + " values (?,?,?,?,?,?)";
             PreparedStatement ps = myconnection().prepareStatement(sql);
             ps.setString(1, user.getNombre());
             ps.setString(2, user.getApellidos());

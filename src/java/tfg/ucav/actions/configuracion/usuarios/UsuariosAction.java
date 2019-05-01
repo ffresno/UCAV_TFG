@@ -28,7 +28,7 @@ import tfg.ucav.util.Mailer;
 public class UsuariosAction extends ActionSupport {
     
     UsuariosDAO usuarioDAO;
-    int intReturnValue;
+    int intReturnValue = -1;
     private String msg;
     int idUsuario;
     private String nombre;
@@ -176,9 +176,10 @@ public class UsuariosAction extends ActionSupport {
     public ArrayList<User> fetchData ( Connection conn ) throws Exception {
     //Statements and execute query
         Statement stmt = conn.createStatement();
-        String query = "SELECT * FROM USERS";
+        String query = "SELECT * FROM users";
         
         ResultSet rs = stmt.executeQuery(query);
+        
         
         while (rs.next()) {
             User usuario = new User();
@@ -266,7 +267,7 @@ public class UsuariosAction extends ActionSupport {
         String msg = "Bienvenido al Sistema de Control de documentación, "
                 + "ya puedes acceder al sistema utilizano estos datos:\n\n"
                 + "\tEmail: " + email + "\n"
-                + "\nContraseña: " + pwd + "\n";
+                + "\tContraseña: " + pwd + "\n";
         
         
         Mailer.send(email,"Bienvenido, " + this.getNombre(), msg);
