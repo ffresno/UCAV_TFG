@@ -1,7 +1,9 @@
 package tfg.ucav.model.solicitudes;
-// Generated 01-may-2019 20:02:45 by Hibernate Tools 4.3.1
+// Generated 02-may-2019 8:28:30 by Hibernate Tools 4.3.1
 
 
+import tfg.ucav.model.configuracion.provincias.Provincias;
+import tfg.ucav.model.usuarios.Users;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +14,9 @@ public class Solicitudes  implements java.io.Serializable {
 
 
      private Integer idSolicitud;
+     private Provincias provincias;
      private SolicitudEstados solicitudEstados;
+     private Users users;
      private String nombre;
      private String apellidos;
      private String dni;
@@ -24,16 +28,16 @@ public class Solicitudes  implements java.io.Serializable {
      private String pais;
      private String telefono1;
      private String telefono2;
-     private int idUser;
-     private int idProvincia;
      private Set solicitudDetalles = new HashSet(0);
 
     public Solicitudes() {
     }
 
 	
-    public Solicitudes(SolicitudEstados solicitudEstados, String nombre, String apellidos, String dni, boolean sexohombre, String direccion, String nacionalidad, String ciudad, String codigoPostal, String pais, String telefono1, int idUser, int idProvincia) {
+    public Solicitudes(Provincias provincias, SolicitudEstados solicitudEstados, Users users, String nombre, String apellidos, String dni, boolean sexohombre, String direccion, String nacionalidad, String ciudad, String codigoPostal, String pais, String telefono1) {
+        this.provincias = provincias;
         this.solicitudEstados = solicitudEstados;
+        this.users = users;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
@@ -44,11 +48,11 @@ public class Solicitudes  implements java.io.Serializable {
         this.codigoPostal = codigoPostal;
         this.pais = pais;
         this.telefono1 = telefono1;
-        this.idUser = idUser;
-        this.idProvincia = idProvincia;
     }
-    public Solicitudes(SolicitudEstados solicitudEstados, String nombre, String apellidos, String dni, boolean sexohombre, String direccion, String nacionalidad, String ciudad, String codigoPostal, String pais, String telefono1, String telefono2, int idUser, int idProvincia, Set solicitudDetalles) {
+    public Solicitudes(Provincias provincias, SolicitudEstados solicitudEstados, Users users, String nombre, String apellidos, String dni, boolean sexohombre, String direccion, String nacionalidad, String ciudad, String codigoPostal, String pais, String telefono1, String telefono2, Set solicitudDetalles) {
+       this.provincias = provincias;
        this.solicitudEstados = solicitudEstados;
+       this.users = users;
        this.nombre = nombre;
        this.apellidos = apellidos;
        this.dni = dni;
@@ -60,8 +64,6 @@ public class Solicitudes  implements java.io.Serializable {
        this.pais = pais;
        this.telefono1 = telefono1;
        this.telefono2 = telefono2;
-       this.idUser = idUser;
-       this.idProvincia = idProvincia;
        this.solicitudDetalles = solicitudDetalles;
     }
    
@@ -72,12 +74,26 @@ public class Solicitudes  implements java.io.Serializable {
     public void setIdSolicitud(Integer idSolicitud) {
         this.idSolicitud = idSolicitud;
     }
+    public Provincias getProvincias() {
+        return this.provincias;
+    }
+    
+    public void setProvincias(Provincias provincias) {
+        this.provincias = provincias;
+    }
     public SolicitudEstados getSolicitudEstados() {
         return this.solicitudEstados;
     }
     
     public void setSolicitudEstados(SolicitudEstados solicitudEstados) {
         this.solicitudEstados = solicitudEstados;
+    }
+    public Users getUsers() {
+        return this.users;
+    }
+    
+    public void setUsers(Users users) {
+        this.users = users;
     }
     public String getNombre() {
         return this.nombre;
@@ -155,20 +171,6 @@ public class Solicitudes  implements java.io.Serializable {
     
     public void setTelefono2(String telefono2) {
         this.telefono2 = telefono2;
-    }
-    public int getIdUser() {
-        return this.idUser;
-    }
-    
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-    public int getIdProvincia() {
-        return this.idProvincia;
-    }
-    
-    public void setIdProvincia(int idProvincia) {
-        this.idProvincia = idProvincia;
     }
     public Set getSolicitudDetalles() {
         return this.solicitudDetalles;

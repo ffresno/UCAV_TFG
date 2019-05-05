@@ -6,17 +6,12 @@
 package tfg.ucav.actions.solicitudes;
 
 import com.opensymphony.xwork2.ActionSupport;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
 import org.apache.struts2.interceptor.SessionAware;
-import tfg.ucav.actions.configuracion.cursos.CursosAction;
 import tfg.ucav.dao.configuracion.cursos.CursosDAO;
 import tfg.ucav.dao.configuracion.provincias.ProvinciasDAO;
 import tfg.ucav.dao.solicitudes.SolicitudesDAO;
@@ -25,7 +20,7 @@ import tfg.ucav.model.configuracion.provincias.Provincias;
 import tfg.ucav.model.solicitudes.SolicitudDetalle;
 import tfg.ucav.model.solicitudes.SolicitudEstados;
 import tfg.ucav.model.solicitudes.Solicitudes;
-import tfg.ucav.model.usuarios.User;
+import tfg.ucav.model.usuarios.Users;
 
 /**
  *
@@ -359,16 +354,7 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
     public void setMsg(String msg) {
         this.msg = msg;
     }
-    public static Connection myConnection() throws Exception {
-    //open context
-        Context ctx = new InitialContext();
-        if ( ctx == null ) throw new Exception("Error al cargar el contexto");
-        //DataSource y connection
-        DataSource pool;
-        pool = (DataSource)ctx.lookup("java:/comp/env/jdbc/ConexionMySQL");
-        Connection conn = pool.getConnection();
-        return conn;
-    }
+    
     
     /**
      * Devuelve la lista de solicitudes por usuario
@@ -377,7 +363,7 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
      */
     @Override
     public String execute() throws Exception {
-        User usuario = (User) session.get("appUser"); 
+        Users usuario = (Users) session.get("appUser"); 
         solicitudesDAO = new SolicitudesDAO();
         this.setListSolicitudes(solicitudesDAO.getSolicitudesByUser(usuario.getIdUser()));
         return "SUCCESS";
@@ -403,6 +389,16 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
            return "INPUT";
        }
         
+    }
+    
+    public String incluirDocumentos() {
+        try {
+           
+           return "SUCCESS";
+       } catch (Exception e) {
+           e.printStackTrace();
+           return "INPUT";
+       }
     }
     
     public String guardarSolicitud () {
@@ -432,22 +428,31 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
             solicitud.setTelefono1(this.getTelefono1());
             solicitud.setTelefono2(this.getTelefono2());
             //Obtenemos el usuario de la sesion 
-            User usuario = (User) session.get("appUser");
-            solicitud.setIdUser(usuario.getIdUser());
-            solicitud.setIdProvincia(this.getIdProvincia());
+            Users usuario = (Users) session.get("appUser");
+            solicitud.setUsers(usuario);
+            //Datos de la provincia
+            Provincias prov = new Provincias();
+            prov.setIdProvincia(this.getIdProvincia());
+            solicitud.setProvincias(prov);
+            
             //set estado a pendiente
             SolicitudEstados SoliciEstado = new SolicitudEstados();
             SoliciEstado.setIdEstado(ESTADO_SOLICITUD_PENDIENTE);
             solicitud.setSolicitudEstados(SoliciEstado);
             
             //Set detalle a la solicitud
-            solicitudDetalle.setIdCurso(this.getIdCurso());
+            Curso curso = new Curso();
+            curso.setIdCurso(this.getIdCurso());
+            solicitudDetalle.setCurso(curso);
+            
             solicitudDetalle.setEstudiosAportados(this.getEstudiosAportados());
             solicitudDetalle.setCentroProcedencia(this.getCentroProcedencia());
             solicitudDetalle.setPrimeraVez(this.getPrimeraVez());
             solicitudDetalle.setRepiteCurso(this.getRepiteCurso());
             solicitudDetalle.setTrasladoMatricula(this.getTrasladoMatricula());
             solicitudDetalle.setExentoSeguro(this.getExentoSeguro());
+            //
+            solicitudDetalle.setSolicitudes(solicitud);
             
             Set cjtoDetallesSolicitud = new HashSet();
             cjtoDetallesSolicitud.add(solicitudDetalle);
@@ -459,7 +464,7 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
             //insert record
             this.setIntReturnValue(solicitudDAO.newSolicitud(solicitud));
             if ( this.getIntReturnValue() > 0 ) {
-               this.setMsg("Elemento actualizado correctamente");
+               this.setMsg("Solicitud creada correctamente. Puede consultarla en el listado de solicitudes que ha realizado");
             } else {
                this.setMsg("Error actualizado el elemento");
                return "INPUT";

@@ -17,8 +17,8 @@ import javax.sql.DataSource;
 import tfg.ucav.actions.registro.RegistroAction;
 import tfg.ucav.dao.configuracion.cursos.CursosDAO;
 import tfg.ucav.dao.configuracion.usuarios.UsuariosDAO;
-import tfg.ucav.model.usuarios.Role;
-import tfg.ucav.model.usuarios.User;
+import tfg.ucav.model.usuarios.Roles;
+import tfg.ucav.model.usuarios.Users;
 import tfg.ucav.util.Mailer;
 
 /**
@@ -36,7 +36,7 @@ public class UsuariosAction extends ActionSupport {
     private String email;
     private String password;
     private int role;
-    ArrayList<User> listUsuarios = new ArrayList<User>(); 
+    ArrayList<Users> listUsuarios = new ArrayList<Users>(); 
     
     /**
      * Obtiene el valor de idUsuario
@@ -90,7 +90,7 @@ public class UsuariosAction extends ActionSupport {
      * Obtiene el valor de listUsuarios
      * @return ArrayList
      */
-    public ArrayList<User> getListUsuarios() {
+    public ArrayList<Users> getListUsuarios() {
         return listUsuarios;
     }
 
@@ -98,7 +98,7 @@ public class UsuariosAction extends ActionSupport {
      * Establece la lista de usuarios a mostrar
      * @param list
      */
-    public void setListUsuarios(ArrayList<User> list) {
+    public void setListUsuarios(ArrayList<Users> list) {
         this.listUsuarios = list;
     }
     
@@ -173,7 +173,7 @@ public class UsuariosAction extends ActionSupport {
      * @return ArrayList
      * @throws Exception
      */
-    public ArrayList<User> fetchData ( Connection conn ) throws Exception {
+    public ArrayList<Users> fetchData ( Connection conn ) throws Exception {
     //Statements and execute query
         Statement stmt = conn.createStatement();
         String query = "SELECT * FROM users";
@@ -182,14 +182,14 @@ public class UsuariosAction extends ActionSupport {
         
         
         while (rs.next()) {
-            User usuario = new User();
+            Users usuario = new Users();
             usuario.setIdUser(rs.getInt("ID_USER"));
             usuario.setNombre(rs.getString("NOMBRE"));
             usuario.setApellidos(rs.getString("APELLIDOS"));
             usuario.setEmail(rs.getString("EMAIL"));
             usuario.setPassword(rs.getString("PASSWORD"));
             usuario.setCreateTime(rs.getDate("CREATE_TIME"));
-            Role role = new Role();
+            Roles role = new Roles();
             role.setIdRole(rs.getInt("ID_ROLE"));
             usuario.setRoles(role);
             listUsuarios.add(usuario);
@@ -209,13 +209,13 @@ public class UsuariosAction extends ActionSupport {
      */
     public String nuevoUsuario() {
         
-        User user = new User();
+        Users user = new Users();
         user.setNombre(this.getNombre());
         user.setApellidos(this.getApellidos());
         user.setEmail(this.getEmail());
         user.setPassword(this.getPassword());
         user.setCreateTime(new Date());
-        Role role = new Role();
+        Roles role = new Roles();
         role.setIdRole(this.getRole());
         user.setRoles(role);
         usuarioDAO = new UsuariosDAO();
@@ -224,7 +224,7 @@ public class UsuariosAction extends ActionSupport {
             //insert record
             this.setIntReturnValue(usuarioDAO.newUsuario(user));
             if ( this.getIntReturnValue() > 0 ) {
-               this.setMsg("Usuario registrado creado correctamente");
+               this.setMsg("Usuario registrado creado correctamente. Se le ha enviado un correo electrónico.");
             
                 //Send welcome email 
                 if (!this.getEmail().trim().equals("")) {
@@ -274,7 +274,7 @@ public class UsuariosAction extends ActionSupport {
     }
     
     public String actualizarUsuario() throws Exception {
-        User user = new User();
+        Users user = new Users();
         user.setIdUser(this.getIdUsuario());
         user.setNombre(this.getNombre());
         user.setApellidos(this.getApellidos());

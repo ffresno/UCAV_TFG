@@ -17,7 +17,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import org.apache.struts2.dispatcher.SessionMap;
 
-import tfg.ucav.model.usuarios.User;
+import tfg.ucav.model.usuarios.Users;
 import tfg.ucav.util.Mailer;
 
 
@@ -160,7 +160,7 @@ public class CheckLoginAction extends ActionSupport implements SessionAware {
 
             //user exist
             if ( rs.next()) {
-                User usuario = new User();
+                Users usuario = new Users();
                 usuario.setIdUser(rs.getInt("ID_USER"));
                 usuario.setNombre(rs.getString("NOMBRE"));
                 usuario.setEmail(rs.getString("EMAIL"));
@@ -207,7 +207,7 @@ public class CheckLoginAction extends ActionSupport implements SessionAware {
      * @param usuario
      * @param intRole
      */
-    public void setUserToSession(User usuario, int intRole) {
+    public void setUserToSession(Users usuario, int intRole) {
         
         // Write to the session
         this.appSession.put("appUser", usuario);

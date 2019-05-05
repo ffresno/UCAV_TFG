@@ -13,7 +13,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import static tfg.ucav.dao.configuracion.cursos.CursosDAO.myconnection;
-import tfg.ucav.model.usuarios.User;
+import tfg.ucav.model.usuarios.Users;
 
 /**
  *
@@ -37,7 +37,7 @@ public class UsuariosDAO {
         }
     }
     
-    public int newUsuario (User user) throws SQLException, Exception {
+    public int newUsuario (Users user) throws SQLException, Exception {
         
         int i = 0; //return value
         
@@ -51,7 +51,7 @@ public class UsuariosDAO {
             ps.setString(3, user.getEmail());
             ps.setString(4, user.getPassword());
             ps.setTimestamp(5, new java.sql.Timestamp(System.currentTimeMillis()));
-            ps.setInt(6, user.getRole().getIdRole());
+            ps.setInt(6, user.getRoles().getIdRole());
             //print query
             System.out.println(ps);
             i = ps.executeUpdate();
@@ -92,7 +92,7 @@ public class UsuariosDAO {
     * @param nombre Parámetro del elemento a actualizar
     * @return SUCCESS
     */
-    public int updateUsuario(User user)
+    public int updateUsuario(Users user)
 			throws SQLException, Exception {
         int i = 0;
         try {

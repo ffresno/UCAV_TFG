@@ -8,8 +8,9 @@
 <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <!-- Custom CSS -->
-<link href="assets/css/style.css" rel="stylesheet" type="text/css" />		
+<link href="assets/css/style.css" rel="stylesheet" type="text/css" />	
 
+<link href="assets/css/jquery.filer.css" rel="stylesheet" type="text/css"/>
 <!-- BEGIN CSS for this page -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>	
 <style>	

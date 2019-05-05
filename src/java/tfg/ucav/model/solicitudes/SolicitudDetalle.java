@@ -1,5 +1,8 @@
 package tfg.ucav.model.solicitudes;
-// Generated 01-may-2019 20:02:45 by Hibernate Tools 4.3.1
+// Generated 02-may-2019 8:28:30 by Hibernate Tools 4.3.1
+
+import tfg.ucav.model.configuracion.cursos.Curso;
+
 
 
 
@@ -10,8 +13,8 @@ public class SolicitudDetalle  implements java.io.Serializable {
 
 
      private Integer id;
+     private Curso curso;
      private Solicitudes solicitudes;
-     private int idCurso;
      private String estudiosAportados;
      private String centroProcedencia;
      private boolean primeraVez;
@@ -24,18 +27,18 @@ public class SolicitudDetalle  implements java.io.Serializable {
     }
 
 	
-    public SolicitudDetalle(Solicitudes solicitudes, int idCurso, String estudiosAportados, boolean primeraVez, boolean repiteCurso, boolean trasladoMatricula, boolean exentoSeguro) {
+    public SolicitudDetalle(Curso curso, Solicitudes solicitudes, String estudiosAportados, boolean primeraVez, boolean repiteCurso, boolean trasladoMatricula, boolean exentoSeguro) {
+        this.curso = curso;
         this.solicitudes = solicitudes;
-        this.idCurso = idCurso;
         this.estudiosAportados = estudiosAportados;
         this.primeraVez = primeraVez;
         this.repiteCurso = repiteCurso;
         this.trasladoMatricula = trasladoMatricula;
         this.exentoSeguro = exentoSeguro;
     }
-    public SolicitudDetalle(Solicitudes solicitudes, int idCurso, String estudiosAportados, String centroProcedencia, boolean primeraVez, boolean repiteCurso, boolean trasladoMatricula, boolean exentoSeguro, String NExpediente) {
+    public SolicitudDetalle(Curso curso, Solicitudes solicitudes, String estudiosAportados, String centroProcedencia, boolean primeraVez, boolean repiteCurso, boolean trasladoMatricula, boolean exentoSeguro, String NExpediente) {
+       this.curso = curso;
        this.solicitudes = solicitudes;
-       this.idCurso = idCurso;
        this.estudiosAportados = estudiosAportados;
        this.centroProcedencia = centroProcedencia;
        this.primeraVez = primeraVez;
@@ -52,19 +55,19 @@ public class SolicitudDetalle  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+    public Curso getCurso() {
+        return this.curso;
+    }
+    
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
     public Solicitudes getSolicitudes() {
         return this.solicitudes;
     }
     
     public void setSolicitudes(Solicitudes solicitudes) {
         this.solicitudes = solicitudes;
-    }
-    public int getIdCurso() {
-        return this.idCurso;
-    }
-    
-    public void setIdCurso(int idCurso) {
-        this.idCurso = idCurso;
     }
     public String getEstudiosAportados() {
         return this.estudiosAportados;

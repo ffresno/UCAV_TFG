@@ -9,7 +9,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
 import tfg.ucav.dao.configuracion.provincias.ProvinciasDAO;
-import tfg.ucav.model.configuracion.cursos.Curso;
 import tfg.ucav.model.configuracion.provincias.Provincias;
 
 /**

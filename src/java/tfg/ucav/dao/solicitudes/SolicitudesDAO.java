@@ -78,11 +78,10 @@ public class SolicitudesDAO {
         try{
             tx = session.beginTransaction();
             //String query = "FROM Solicitudes WHERE iduser = ?";
-            Query query = session.createQuery("FROM Solicitudes WHERE idUser = ?");
+            Query query = session.createQuery("FROM Solicitudes WHERE id_user = ?");
             query.setInteger(0, userId);
-            
             listSolicitudes = query.list();
-            
+            //listSolicitudes.size();
             tx.commit();
             System.out.println(listSolicitudes.size());
           } catch (HibernateException e) {

@@ -8,9 +8,9 @@ package tfg.ucav.actions.registro;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Date;
 import tfg.ucav.dao.configuracion.usuarios.UsuariosDAO;
-import tfg.ucav.model.usuarios.Role;
+import tfg.ucav.model.usuarios.Roles;
 import tfg.ucav.util.Mailer;
-import tfg.ucav.model.usuarios.User;
+import tfg.ucav.model.usuarios.Users;
 import tfg.ucav.dao.configuracion.usuarios.UsuariosDAO;
 /**
  * Acción que registra un usuario del sistema
@@ -87,14 +87,14 @@ public class RegistroAction extends ActionSupport {
     @Override
     public String execute () {
         
-        User user = new User();
+        Users user = new Users();
         user.setNombre(this.getNombre());
         user.setApellidos(this.getApellidos());
         user.setEmail(this.getEmail());
         user.setPassword(this.getPassword());
         user.setCreateTime(new Date());
         //Set to student Role
-        Role role = new Role();
+        Roles role = new Roles();
         role.setIdRole(2);
         user.setRoles(role);
         
@@ -104,7 +104,7 @@ public class RegistroAction extends ActionSupport {
             //insert record
             this.setIntReturnValue(usuarioDAO.newUsuario(user));
             if ( this.getIntReturnValue() > 0 ) {
-               this.setMsg("Usuario registrado creado correctamente");
+               this.setMsg("Usuario registrado creado correctamente. Se le ha enviado un correo electrónico.");
             
                 //Send welcome email 
                 if (!this.getEmail().trim().equals("")) {

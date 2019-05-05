@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author fernandofresno
  * @version $Id$
  */
-public class Asignatura implements Serializable {
+public class Asignatura2 implements Serializable {
 
 	/** serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -25,7 +25,7 @@ public class Asignatura implements Serializable {
 	/**
 	 * Constructor.
 	 */
-	public Asignatura() {
+	public Asignatura2() {
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class Asignatura implements Serializable {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		Asignatura other = (Asignatura) obj;
+		Asignatura2 other = (Asignatura2) obj;
 		if (idAsignatura == null) {
 			if (other.idAsignatura != null) {
 				return false;

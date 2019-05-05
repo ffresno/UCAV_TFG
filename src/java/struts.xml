@@ -15,7 +15,7 @@
         
         <action name="CheckLogin" class="tfg.ucav.actions.login.CheckLoginAction">
                 <result name="SUCCESS_ADMIN">backend/panelControl/dashboardAdmin.jsp</result>
-                <result name="SUCCES_STUDENT">backend/panelControl/dashboardStudent.jsp</result>
+                <result name="SUCCES_STUDENT" type="chain">DashboardStudent</result>
                 <result name="INPUT">frontend/login/login.jsp</result>
         </action>
         <action name="Logout" class="tfg.ucav.actions.login.CheckLoginAction" method="logout">  
@@ -44,9 +44,7 @@
         <action name="DashboardAdmin">
             <result>backend/panelControl/dashboardAdmin.jsp</result>
         </action>
-        <action name="DashboardStudent" class="tfg.ucav.actions.solicitudes.SolicitudesAction">
-            <result name="SUCCESS">backend/panelControl/dashboardStudent.jsp</result>
-        </action>
+        
         <!-- BACKEND -> CONFIGURACIÓN --> 
         <!-- BACKEND -> CONFIGURACIÓN - PROVINCIAS --> 
         <action name="GestionProvincias" class="tfg.ucav.actions.configuracion.provincias.ProvinciasAction">
@@ -95,11 +93,17 @@
         </action>
         
         
+        <action name="DashboardStudent" class="tfg.ucav.actions.solicitudes.SolicitudesAction">
+            <result name="SUCCESS">backend/panelControl/dashboardStudent.jsp</result>
+        </action>
          <action name="NuevaSolicitud" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="nuevaSolicitud">
             <result name="SUCCESS" >backend/solicitudes/solicitudAlumno.jsp</result>
         </action>
         <action name="GuardarSolicitud" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="guardarSolicitud">
-            <result name="SUCCESS" >backend/solicitudes/solicitudAlumno.jsp</result>
+            <result name="SUCCESS" type="chain">DashboardStudent</result>
+        </action>
+        <action name="IncluirDocumentos" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="incluirDocumentos">
+            <result name="SUCCESS" >backend/solicitudes/incluirDocumentos.jsp</result>
         </action>
             
     </package>

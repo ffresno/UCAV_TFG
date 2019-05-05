@@ -19,3 +19,5 @@
 
 <!-- App js -->
 <script src="assets/js/pikeadmin.js"></script>
+<!-- App js -->
+<script src="assets/js/jquery.filer.min.js"></script>

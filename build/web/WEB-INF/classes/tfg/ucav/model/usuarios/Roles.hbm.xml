@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-may-2019 8:28:30 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="tfg.ucav.model.usuarios.Roles" table="roles" catalog="tfgucav" optimistic-lock="version">
+        <id name="idRole" type="java.lang.Integer">
+            <column name="id_role" />
+            <generator class="identity" />
+        </id>
+        <property name="description" type="string">
+            <column name="description" length="20" unique="true" />
+        </property>
+        <set name="userses" table="users" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_role" />
+            </key>
+            <one-to-many class="tfg.ucav.model.usuarios.Users" />
+        </set>
+    </class>
+</hibernate-mapping>

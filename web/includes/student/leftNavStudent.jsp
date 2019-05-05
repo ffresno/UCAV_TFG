@@ -11,8 +11,6 @@
     <div class="sidebar-inner leftscroll">
 
         <div id="sidebar-menu">
-                        <h1><s:property value="opcionMenu"/></h1>
-                        <h1><s:property value="opcionSubMenu"/></h1>
             <ul>
 
                 <li class="submenu">

@@ -1,5 +1,5 @@
 package tfg.ucav.model.solicitudes;
-// Generated 01-may-2019 20:02:45 by Hibernate Tools 4.3.1
+// Generated 02-may-2019 8:28:30 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
