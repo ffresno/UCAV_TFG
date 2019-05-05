@@ -7,12 +7,10 @@ package tfg.ucav.dao.configuracion.usuarios;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import static tfg.ucav.dao.configuracion.cursos.CursosDAO.myconnection;
 import tfg.ucav.model.usuarios.Users;
 
 /**
@@ -36,7 +34,13 @@ public class UsuariosDAO {
             return null;
         }
     }
-    
+    /**
+     * MÉTODO QUE REGISTRA UN USUARIO
+     * @param user
+     * @return
+     * @throws SQLException
+     * @throws Exception 
+     */
     public int newUsuario (Users user) throws SQLException, Exception {
         
         int i = 0; //return value
@@ -52,8 +56,7 @@ public class UsuariosDAO {
             ps.setString(4, user.getPassword());
             ps.setTimestamp(5, new java.sql.Timestamp(System.currentTimeMillis()));
             ps.setInt(6, user.getRoles().getIdRole());
-            //print query
-            System.out.println(ps);
+            //System.out.println(ps);
             i = ps.executeUpdate();
             return i;
         } catch (Exception e) {

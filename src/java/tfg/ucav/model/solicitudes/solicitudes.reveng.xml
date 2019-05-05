@@ -41,11 +41,13 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="tfgucav"/>
+  <table-filter match-name="solicitud_estados"/>
+  <table-filter match-name="solicitud_detalle"/>
+  <table-filter match-name="documentos"/>
+  <table-filter match-name="solicitud_documentos"/>
   <table-filter match-name="solicitudes"/>
-  <table-filter match-name="users"/>
-  <table-filter match-name="curso"/>
   <table-filter match-name="provincias"/>
   <table-filter match-name="roles"/>
-  <table-filter match-name="solicitud_detalle"/>
-  <table-filter match-name="solicitud_estados"/>
+  <table-filter match-name="users"/>
+  <table-filter match-name="curso"/>
 </hibernate-reverse-engineering>

@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02-may-2019 8:28:30 by Hibernate Tools 4.3.1 -->
+<!-- Generated 05-may-2019 18:06:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="tfg.ucav.model.solicitudes.Solicitudes" table="solicitudes" catalog="tfgucav" optimistic-lock="version">
         <id name="idSolicitud" type="java.lang.Integer">
             <column name="id_solicitud" />
             <generator class="identity" />
         </id>
-        <many-to-one name="provincias" class="tfg.ucav.model.configuracion.provincias.Provincias" lazy="false" fetch="select">
+        <many-to-one name="provincias" class="tfg.ucav.model.configuracion.provincias.Provincias" lazy="false" cascade="all" fetch="select">
             <column name="id_provincia" not-null="true" />
         </many-to-one>
-        <many-to-one name="solicitudEstados" class="tfg.ucav.model.solicitudes.SolicitudEstados" lazy="false" fetch="select">
+        <many-to-one name="solicitudEstados" class="tfg.ucav.model.solicitudes.SolicitudEstados" lazy="false" cascade="all" fetch="select">
             <column name="id_estado" not-null="true" />
         </many-to-one>
-        <many-to-one name="users" class="tfg.ucav.model.usuarios.Users" fetch="select">
+        <many-to-one name="users" class="tfg.ucav.model.usuarios.Users" lazy="false" cascade="all" fetch="select">
             <column name="id_user" not-null="true" />
         </many-to-one>
         <property name="nombre" type="string">
@@ -50,11 +50,17 @@
         <property name="telefono2" type="string">
             <column name="telefono2" length="12" />
         </property>
-        <set name="solicitudDetalles" table="solicitud_detalle" inverse="true" lazy="false" fetch="select" cascade="all">
+        <set name="solicitudDetalles" table="solicitud_detalle" inverse="true" lazy="false" cascade="all" fetch="select">
             <key>
                 <column name="id_solicitud" not-null="true" />
             </key>
             <one-to-many class="tfg.ucav.model.solicitudes.SolicitudDetalle" />
+        </set>
+        <set name="solicitudDocumentoses" table="solicitud_documentos" inverse="true" lazy="false" cascade="all" fetch="select">
+            <key>
+                <column name="id_solicitud" not-null="true" />
+            </key>
+            <one-to-many class="tfg.ucav.model.solicitudes.SolicitudDocumentos" />
         </set>
     </class>
 </hibernate-mapping>

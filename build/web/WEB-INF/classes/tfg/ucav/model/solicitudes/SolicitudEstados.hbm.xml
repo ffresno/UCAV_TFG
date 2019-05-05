@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02-may-2019 8:28:30 by Hibernate Tools 4.3.1 -->
+<!-- Generated 05-may-2019 18:06:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="tfg.ucav.model.solicitudes.SolicitudEstados" table="solicitud_estados" catalog="tfgucav" optimistic-lock="version">
         <id name="idEstado" type="java.lang.Integer">
@@ -11,7 +11,7 @@
         <property name="nombre" type="string">
             <column name="nombre" length="50" />
         </property>
-        <set name="solicitudeses" table="solicitudes" inverse="true" lazy="true" fetch="select">
+        <set name="solicitudeses" table="solicitudes" inverse="true" lazy="false" cascade="all" fetch="select">
             <key>
                 <column name="id_estado" not-null="true" />
             </key>

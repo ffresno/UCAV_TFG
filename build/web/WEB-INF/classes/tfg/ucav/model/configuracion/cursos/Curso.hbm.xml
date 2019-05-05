@@ -1,15 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02-may-2019 8:28:30 by Hibernate Tools 4.3.1 -->
+<!-- Generated 05-may-2019 18:06:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="tfg.ucav.model.configuracion.cursos.Curso" table="curso" catalog="tfgucav">
+    <class name="tfg.ucav.model.configuracion.cursos.Curso" table="curso" catalog="tfgucav" optimistic-lock="version">
         <id name="idCurso" type="java.lang.Integer">
             <column name="id_curso" />
-            <generator class="identity"></generator>
+            <generator class="identity" />
         </id>
         <property name="nombre" type="string">
             <column name="nombre" length="100" not-null="true" />
         </property>
+        <set name="solicitudDetalles" table="solicitud_detalle" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="id_curso" not-null="true" />
+            </key>
+            <one-to-many class="tfg.ucav.model.solicitudes.SolicitudDetalle" />
+        </set>
     </class>
 </hibernate-mapping>

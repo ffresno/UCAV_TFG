@@ -1,5 +1,5 @@
 package tfg.ucav.model.solicitudes;
-// Generated 02-may-2019 8:28:30 by Hibernate Tools 4.3.1
+// Generated 05-may-2019 18:06:09 by Hibernate Tools 4.3.1
 
 import tfg.ucav.model.configuracion.cursos.Curso;
 

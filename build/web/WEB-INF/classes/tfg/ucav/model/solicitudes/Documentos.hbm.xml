@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-may-2019 18:06:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="tfg.ucav.model.solicitudes.Documentos" table="documentos" catalog="tfgucav" optimistic-lock="version">
+        <id name="idDocumento" type="java.lang.Integer">
+            <column name="id_documento" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" />
+        </property>
+        <set name="solicitudDocumentoses" table="solicitud_documentos" inverse="true" lazy="false" cascade="all" fetch="select">
+            <key>
+                <column name="id_documento" not-null="true" />
+            </key>
+            <one-to-many class="tfg.ucav.model.solicitudes.SolicitudDocumentos" />
+        </set>
+    </class>
+</hibernate-mapping>

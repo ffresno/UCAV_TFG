@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-may-2019 18:06:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="tfg.ucav.model.solicitudes.SolicitudDocumentos" table="solicitud_documentos" catalog="tfgucav" optimistic-lock="version">
+        <composite-id name="id" class="tfg.ucav.model.solicitudes.SolicitudDocumentosId">
+            <key-property name="idDocumento" type="int">
+                <column name="id_documento" />
+            </key-property>
+            <key-property name="idSolicitud" type="int">
+                <column name="id_solicitud" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="documentos" class="tfg.ucav.model.solicitudes.Documentos" update="false" insert="false" fetch="select">
+            <column name="id_documento" not-null="true" />
+        </many-to-one>
+        <many-to-one name="solicitudes" class="tfg.ucav.model.solicitudes.Solicitudes" update="false" insert="false" fetch="select">
+            <column name="id_solicitud" not-null="true" />
+        </many-to-one>
+        <property name="rutaDocumento" type="string">
+            <column name="ruta_documento" length="200" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

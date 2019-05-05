@@ -14,8 +14,6 @@ import java.util.Date;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import tfg.ucav.actions.registro.RegistroAction;
-import tfg.ucav.dao.configuracion.cursos.CursosDAO;
 import tfg.ucav.dao.configuracion.usuarios.UsuariosDAO;
 import tfg.ucav.model.usuarios.Roles;
 import tfg.ucav.model.usuarios.Users;
@@ -205,6 +203,7 @@ public class UsuariosAction extends ActionSupport {
    
     /**
      * inserta el usuario con los datos indicados
+     * desde el backend
      * @return Success
      */
     public String nuevoUsuario() {

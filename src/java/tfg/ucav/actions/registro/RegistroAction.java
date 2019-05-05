@@ -83,7 +83,11 @@ public class RegistroAction extends ActionSupport {
     public void setMsg(String msg) {
         this.msg = msg;
     }
-    
+    /**
+     * MÉTODO QUE REGISTRA UN USUARIO DESDE EL FORMULARIO DE REGISTRO DE USUARIO
+     * DEL FRONTEND
+     * @return 
+     */
     @Override
     public String execute () {
         
