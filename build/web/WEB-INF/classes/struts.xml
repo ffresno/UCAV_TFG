@@ -62,7 +62,7 @@
              <result name="INPUT" type="chain">GestionProvincias</result>
         </action>
         
-         <!-- BACKEND -> CONFIGURACIÓN - PROVINCIAS --> 
+         <!-- BACKEND -> CONFIGURACIÓN - ESTADOS DE SOLCITUD --> 
         <action name="GestionEstados" class="tfg.ucav.actions.configuracion.estadossolicitud.SolicitudEstadosAction">
             <result name="SUCCESS">backend/panelControl/estadossolicitud/estadosSolicitudIndex.jsp</result>
             <result name="INPUT">backend/panelControl/estadossolicitud/estadosSolicitudIndex.jsp</result>
@@ -71,6 +71,26 @@
         <action name="ActualizarEstado" class="tfg.ucav.actions.configuracion.estadossolicitud.SolicitudEstadosAction" method="actualizarEstado">
              <result name="SUCCESS" type="chain">GestionEstados</result>
              <result name="INPUT" type="chain">GestionEstados</result>
+        </action>
+        
+        <!-- BACKEND -> CONFIGURACIÓN - DOCUMENTOS --> 
+        <action name="GestionDocumentos" class="tfg.ucav.actions.configuracion.documentos.DocumentosAction">
+            <result name="SUCCESS">backend/panelControl/documentos/documentosIndex.jsp</result>
+            <result name="INPUT">backend/panelControl/documentos/documentosIndex.jsp</result>
+        </action>
+        
+        <action name="ActualizarDocumento" class="tfg.ucav.actions.configuracion.documentos.DocumentosAction" method="actualizarDocumento">
+             <result name="SUCCESS" type="chain">GestionDocumentos</result>
+             <result name="INPUT" type="chain">GestionDocumentos</result>
+        </action>
+        
+        <action name="InsertarDocumento" class="tfg.ucav.actions.configuracion.documentos.DocumentosAction" method="insertarDocumento">
+             <result name="SUCCESS" type="chain">GestionDocumentos</result>
+             <result name="INPUT" type="chain">GestionDocumentos</result>
+        </action>
+        <action name="BorrarDocumento" class="tfg.ucav.actions.configuracion.documentos.DocumentosAction" method="borrarDocumento">
+            <result name="SUCCESS" type="chain">GestionDocumentos</result> 
+            <result name="INPUT" type="chain">GestionDocumentos</result>
         </action>
         
         

@@ -83,11 +83,11 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">						
                                 <div class="card mb-3">
                                     <div class="card-header">
-                                        <span class="pull-right"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_add_user"><i class="fa fa-plus" aria-hidden="true"></i> Añadir Estado de solicitud</button></span>
+                                        <span class="pull-right"><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_add_user"><i class="fa fa-plus" aria-hidden="true"></i> Añadir Documento</button></span>
                                         <div class="modal fade custom-modal" tabindex="-1" role="dialog" aria-labelledby="modal_add_user" aria-hidden="true" id="modal_add_user">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
-                                                    <form action="javascript:alert('No implementado');" method="post" enctype="multipart/form-data">
+                                                    <form action="InsertarDocumento" method="post" enctype="multipart/form-data">
 
                                                         <div class="modal-header">
                                                             <h5 class="modal-title">Añadir Documento</h5>
@@ -120,7 +120,7 @@
                                                 </div>
                                             </div>
                                         </div> 
-                                        <h3><i class="fa fa-folder"></i> Existen <s:property value ="listDocumentos.size()"/> Documentos</h3>								
+                                        <h3><i class="fa fa-folder"></i> Existen <s:property value ="listdocumentos.size()"/> Documentos</h3>								
                                     </div>
                                     <!-- end card-header -->	
 
@@ -142,10 +142,10 @@
                                                     <tr>
                                                         <td>${status.count}</td>
                                                         <td>
-                                                            <strong><s:property value="nombre"/> </strong>
+                                                            <s:property value="nombre"/> 
                                                         </td>
                                                         <td>
-                                                            <strong><s:property value="descripcion"/> </strong>
+                                                            <s:property value="descripcion"/> 
                                                         </td>
                                                         <td>
                                                             <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_edit_${documento.idDocumento}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -171,14 +171,14 @@
                                                                                         <div class="col-lg-12">
                                                                                         <div class="form-group">
                                                                                             <label>Descripción</label>
-                                                                                            <input class="form-control" name="nombre" type="text" required value="${documento.descripcion}" />
+                                                                                            <input class="form-control" name="descripcion" type="text" required value="${documento.descripcion}" />
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>             
 
                                                                             <div class="modal-footer">
-                                                                                <input type="hidden" name="idEstado" value="${documento.idDocumento}" />
+                                                                                <input type="hidden" name="idDocumento" value="${documento.idDocumento}" />
                                                                                 <button type="submit" class="btn btn-primary">Guardar</button>
                                                                             </div>
 
@@ -200,12 +200,11 @@
                                         <script>
                                             function deleteRecord(id)
                                             {
-                                                alert("No implementado");
-                                                /*
+                                                
                                                 if (confirm('¿Estás seguro que quieres borrar el elemento?')) {
                                        
-                                                    window.location.href = 'BorrarEstado?idEstado='+id;
-                                                }*/
+                                                    window.location.href = 'BorrarDocumento?idDocumento='+id;
+                                                }
                                             }
                                         </script>
 
