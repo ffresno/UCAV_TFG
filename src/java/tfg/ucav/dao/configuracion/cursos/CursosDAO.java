@@ -43,7 +43,7 @@ public class CursosDAO {
     public static Connection myconnection2() throws Exception {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/tfgucav", "root", "");
+            return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/BDUCAV", "root", "");
         } catch (Exception e) {
             e.printStackTrace();
             return null;

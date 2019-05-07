@@ -148,7 +148,9 @@
                                                         <td align="center">     
                                                             
                                                             <s:if test="solicitudEstados.idEstado==3">
-                                                                <a href="IncluirDocumentos" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#avisoSubidaArchivosModal" title="Subir documentos">
+                                                                <a href="IncluirDocumentos" class="btn btn-primary btn-sm" data-toggle="modal" 
+                                                                   data-id="<s:property value="idSolicitud"/>" 
+                                                                   data-target="#avisoSubidaArchivosModal" id="openModalUpload" title="Subir documentos" >
                                                                     <i class="fa fa-cloud-upload" aria-hidden="true"></i>
                                                                 </a>
                                                              </s:if>
@@ -196,12 +198,48 @@
                     y plazos establecidos para formalizar su solicitud. Prepare los documentos en formato electrónico y
                     pulse sobre Aceptar para comenzar a subir los documentos.
                     </p>
+                    
+                    <form action="UploadDocumentos" method="POST" enctype="multipart/form-data">
+                        <s:iterator value="listDocumentos" var="documento" status="status">
+                        <!-- inlcuir la carga de archivos -->
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">						
+                                <div class="card mb-3">
+                                        <div class="card-header">
+                                                <h6><i class="fa fa-file"></i> DOCUMENTO ${status.count}: <s:property value="nombre"/></h6>
+                                                <s:property value="descripcion"/>
+                                        </div>
+
+                                        <div class="card-body">
+
+                                                <input type="file" name="fileUpload" id="filer_ficheros${status.count}" >
+                                        </div>														
+                                </div><!-- end card-->					
+                            </div>
+                        </s:iterator>
+                        <!--<div class="form-group text-left m-b-0">
+                            <button class="btn btn-primary" type="submit">
+                                Adjuntar documentación
+                            </button>
+                            <a href="javascript:history.back();" class="btn btn-secondary m-l-5">
+                                Cancelar
+                            </a>
+                        </div>-->
+                        <input type="hidden" id="idSolicitud" name="idSolicitud">
           </div>
+            <!--
           <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <a class="btn btn-primary" href="IncluirDocumentos" class="btn btn-primary">Aceptar</a>
-          </div>
+          </div>-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary" type="submit">
+                    Adjuntar documentación
+                </button>
+            </div>
         </div>
+      
+      </form>
   </div>
 </div>
 <!-- END main -->
@@ -222,6 +260,26 @@
                         "sUrl": "assets/js/es/dataTablesSpanish.txt"
                     }
                 } );
+                
+                $(document).on("click", "#openModalUpload", function () {
+                    var idSolicitud = $(this).data('id');
+                    $(".modal-body #idSolicitud").val( idSolicitud );
+                    // As pointed out in comments, 
+                    // it is unnecessary to have to manually call the modal.
+                    // $('#addBookDialog').modal('show');
+               });
+               
+               <s:iterator value="listDocumentos" var="documento" status="status">
+                    $('#filer_ficheros${status.count}').filer({
+                    limit: 1,
+                    maxSize: 3,
+                    extensions: ['jpg', 'jpeg', 'png', 'gif', 'pdf'],
+                    changeInput: true,
+                    showThumbs: true,
+                    addMore: true
+                    });
+                 
+            </s:iterator>
                 
                 
         } );

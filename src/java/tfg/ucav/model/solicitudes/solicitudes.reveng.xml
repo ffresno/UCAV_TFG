@@ -40,7 +40,7 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="tfgucav"/>
+  <schema-selection match-catalog="BDUCAV"/>
   <table-filter match-name="solicitud_estados"/>
   <table-filter match-name="solicitud_detalle"/>
   <table-filter match-name="documentos"/>

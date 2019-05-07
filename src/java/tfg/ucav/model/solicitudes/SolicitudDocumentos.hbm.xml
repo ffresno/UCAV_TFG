@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 05-may-2019 18:06:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="tfg.ucav.model.solicitudes.SolicitudDocumentos" table="solicitud_documentos" catalog="tfgucav" optimistic-lock="version">
+    <class name="tfg.ucav.model.solicitudes.SolicitudDocumentos" table="solicitud_documentos" catalog="BDUCAV" optimistic-lock="version">
         <composite-id name="id" class="tfg.ucav.model.solicitudes.SolicitudDocumentosId">
             <key-property name="idDocumento" type="int">
                 <column name="id_documento" />

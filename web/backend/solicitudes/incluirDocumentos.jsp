@@ -106,63 +106,37 @@
                                     <h3><i class="fa fa-table"></i> Incluir documentación</h3>
                                     Para poder formalizar la matrícula debes adjuntar los documentos que te solicitamos
                                     en formato electrónico. Estos son los documentos que debes adjuntar:
-                                    <ol>
-                                        <li>1 - xxxxxx</li>
-                                        <li>2 - xxxxxx</li>
-                                        <li>3 - xxxxxx</li>
-
-                                    </ol>
+                                 
+                                    
 
                                 </div>
                                 <br>
-                                <!-- inlcuir la carga de archivos -->
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">						
-                                    <div class="card mb-3">
-                                            <div class="card-header">
-                                                    <h3><i class="fa fa-file"></i> Example 1</h3>
-                                                     Maximum 3 files, all files together must have maximal 3MB and the extensions must be matched in the array ['jpg', 'png', 'gif'].
-                                            </div>
+                                <form action="UploadDocumentos" method="POST" enctype="multipart/form-data">
+                                    <s:iterator value="listDocumentos" var="documento" status="status">
+                                    <!-- inlcuir la carga de archivos -->
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">						
+                                            <div class="card mb-3">
+                                                    <div class="card-header">
+                                                            <h3><i class="fa fa-file"></i> DOCUMENTO ${status.count}: <s:property value="nombre"/></h3>
+                                                            <s:property value="descripcion"/>.
+                                                    </div>
 
-                                            <div class="card-body">
+                                                    <div class="card-body">
 
-                                                    <input type="file" name="files[]" id="filer_example1" multiple="multiple">
-
-                                            </div>														
-                                    </div><!-- end card-->					
-                                </div>
-                                
-                                <!-- inlcuir la carga de archivos -->
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">						
-                                    <div class="card mb-3">
-                                            <div class="card-header">
-                                                    <h3><i class="fa fa-file"></i> Example 2</h3>
-                                                     Maximum 3 files, all files together must have maximal 3MB and the extensions must be matched in the array ['jpg', 'png', 'gif'].
-                                            </div>
-
-                                            <div class="card-body">
-
-                                                    <input type="file" name="files[]" id="filer_example2" multiple="multiple">
-
-                                            </div>														
-                                    </div><!-- end card-->					
-                                </div>
-                                
-                                <!-- inlcuir la carga de archivos -->
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">						
-                                    <div class="card mb-3">
-                                            <div class="card-header">
-                                                    <h3><i class="fa fa-file"></i> Example 3</h3>
-                                                     Maximum 3 files, all files together must have maximal 3MB and the extensions must be matched in the array ['jpg', 'png', 'gif'].
-                                            </div>
-
-                                            <div class="card-body">
-
-                                                    <input type="file" name="files[]" id="filer_example3" multiple="multiple">
-
-                                            </div>														
-                                    </div><!-- end card-->					
-                                </div>
-                                
+                                                            <input type="file" name="ficheros[]" id="filer_ficheros${status.count}" multiple="multiple">
+                                                    </div>														
+                                            </div><!-- end card-->					
+                                        </div>
+                                    </s:iterator>
+                                    <div class="form-group text-left m-b-0">
+                                        <button class="btn btn-primary" type="submit">
+                                            Adjuntar documentación
+                                        </button>
+                                        <a href="javascript:history.back();" class="btn btn-secondary m-l-5">
+                                            Cancelar
+                                        </a>
+                                    </div>
+                                </form>
                                 
                             </div><!-- end card-->					
                         </div>
@@ -182,27 +156,7 @@
         <s:include value="../../includes/footer.jsp"/>
 
 </div>
-<!-- Modal -->
-<div class="modal fade" id="avisoSubidaArchivosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Entrega de documentación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-          </div>
-          <div class="modal-body">
-                <p>Después de ser aceptada su solicitud para realizar el curso, prepare los documentos necesarios para formalizar su solicitud y pulse sobre Aceptar para comenzar a subir los documentos.
-                    </p>
-          </div>
-          <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Aceptar</button>
-          </div>
-        </div>
-  </div>
-</div>
+
 <!-- END main -->
 <s:include value="../../includes/js.jsp"/>
 
@@ -223,31 +177,18 @@
                     }
                 } );
                 
-                //Example 2
-                $('#filer_example1').filer({
+                
+                 <s:iterator value="listDocumentos" var="documento" status="status">
+                    $('#filer_ficheros${status.count}').filer({
                     limit: 3,
                     maxSize: 3,
                     extensions: ['jpg', 'jpeg', 'png', 'gif', 'pdf'],
                     changeInput: true,
                     showThumbs: true,
                     addMore: true
-                });
-                $('#filer_example2').filer({
-                    limit: 3,
-                    maxSize: 3,
-                    extensions: ['jpg', 'jpeg', 'png', 'gif', 'pdf'],
-                    changeInput: true,
-                    showThumbs: true,
-                    addMore: true
-                });
-                $('#filer_example3').filer({
-                    limit: 3,
-                    maxSize: 3,
-                    extensions: ['jpg', 'jpeg', 'png', 'gif', 'pdf'],
-                    changeInput: true,
-                    showThumbs: true,
-                    addMore: true
-                });
+                    });
+                 
+            </s:iterator>
         } );
        
         // END CODE Individual column searching (text inputs) DATA TABLE 	 	

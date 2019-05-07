@@ -62,6 +62,18 @@
              <result name="INPUT" type="chain">GestionProvincias</result>
         </action>
         
+         <!-- BACKEND -> CONFIGURACIÓN - PROVINCIAS --> 
+        <action name="GestionEstados" class="tfg.ucav.actions.configuracion.estadossolicitud.SolicitudEstadosAction">
+            <result name="SUCCESS">backend/panelControl/estadossolicitud/estadosSolicitudIndex.jsp</result>
+            <result name="INPUT">backend/panelControl/estadossolicitud/estadosSolicitudIndex.jsp</result>
+        </action>
+        
+        <action name="ActualizarEstado" class="tfg.ucav.actions.configuracion.estadossolicitud.SolicitudEstadosAction" method="actualizarEstado">
+             <result name="SUCCESS" type="chain">GestionEstados</result>
+             <result name="INPUT" type="chain">GestionEstados</result>
+        </action>
+        
+        
         <!-- BACKEND -> CONFIGURACIÓN - CURSOS --> 
         <action name="GestionCursos" class="tfg.ucav.actions.configuracion.cursos.CursosAction">
             <result name="SUCCESS">backend/panelControl/cursos/crudCursos.jsp</result>
@@ -105,7 +117,10 @@
         <action name="IncluirDocumentos" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="incluirDocumentos">
             <result name="SUCCESS" >backend/solicitudes/incluirDocumentos.jsp</result>
         </action>
-            
+        
+        <action name="UploadDocumentos" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="uploadDocumentos">
+            <result name="SUCCESS" type="chain">DashboardStudent</result>
+        </action>
     </package>
     
     

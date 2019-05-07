@@ -6,6 +6,7 @@
 package tfg.ucav.actions.solicitudes;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -17,10 +18,15 @@ import tfg.ucav.dao.configuracion.provincias.ProvinciasDAO;
 import tfg.ucav.dao.solicitudes.SolicitudesDAO;
 import tfg.ucav.model.configuracion.cursos.Curso;
 import tfg.ucav.model.configuracion.provincias.Provincias;
+import tfg.ucav.model.solicitudes.Documentos;
 import tfg.ucav.model.solicitudes.SolicitudDetalle;
 import tfg.ucav.model.solicitudes.SolicitudEstados;
 import tfg.ucav.model.solicitudes.Solicitudes;
 import tfg.ucav.model.usuarios.Users;
+
+import java.io.File;
+import java.io.IOException;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -33,8 +39,36 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
     List<Provincias> listProvincias = new ArrayList<>();
     List<Curso> cursosDisponibles = new ArrayList<>();
     ArrayList<Curso> listCursos = new ArrayList<>();  
-    
+    List<Documentos> listDocumentos = new ArrayList<>();
     List<Solicitudes> listSolicitudes = new ArrayList<>();
+    
+    //SUBIDA DE FICHEROS 
+    private File[] fileUpload;
+    private String[] fileUploadFileName;
+    private String[] fileUploadContentType;
+
+
+    public File[] getFileUpload() {
+        return fileUpload;
+    }
+    public void setFileUpload(File[] fileUploads) {
+        this.fileUpload = fileUploads;
+    }
+    public String[] getFileUploadFileName() {
+        return fileUploadFileName;
+    }
+    public void setFileUploadFileName(String[] fileUploadFileNames) {
+        this.fileUploadFileName = fileUploadFileNames;
+    }
+    public String[] getFileUploadContentType() {
+        return fileUploadContentType;
+    }
+    public void setFileUploadContentType(String[] fileUploadContentTypes) {
+        this.fileUploadContentType = fileUploadContentTypes;
+    }
+    
+    
+
     
     SolicitudesDAO solicitudesDAO;
     ProvinciasDAO provinciasDAO;
@@ -321,6 +355,14 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
         this.idEstado = idEstado;
     }
     
+    
+    public List<Documentos> getListDocumentos() {
+        return listDocumentos;
+    }
+
+    public void setListDocumentos(List<Documentos> list) {
+        this.listDocumentos = list;
+    }
      
 
     public ArrayList<Curso> getListCursos() {
@@ -366,13 +408,17 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
         Users usuario = (Users) session.get("appUser"); 
         solicitudesDAO = new SolicitudesDAO();
         this.setListSolicitudes(solicitudesDAO.getSolicitudesByUser(usuario.getIdUser()));
+        this.setListDocumentos(solicitudesDAO.getDocumentos());
         return "SUCCESS";
         
         //ejecutar el script y volver a generar las clases
         
     }
     
-    
+     /**
+     * método/action para mostrar la página de nueva solicitud
+     * @return String
+     */
     public String nuevaSolicitud () {
         
        try {
@@ -391,16 +437,25 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
         
     }
     
+    /**
+     * método/action para mostrar la página de incluir documentos
+     * @return String
+     */
     public String incluirDocumentos() {
         try {
-           
+            //Obtenemos todos los documentos a entregar
+           solicitudesDAO = new SolicitudesDAO();
+           this.setListDocumentos(solicitudesDAO.getDocumentos());
            return "SUCCESS";
        } catch (Exception e) {
            e.printStackTrace();
            return "INPUT";
        }
     }
-    
+    /**
+     * método/action que guarda una solicitud realizada por un usuario
+     * @return String
+     */
     public String guardarSolicitud () {
         
        try {
@@ -470,15 +525,6 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
                return "INPUT";
             }
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
        } catch (Exception e) {
            e.printStackTrace();
            return "INPUT";
@@ -486,4 +532,32 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
        return "SUCCESS";
     }
     
+    
+    /**
+     * método que adjunta los documentos a la solicitud
+     */
+    public String uploadDocumentos() {
+        
+        try {
+            SolicitudesDAO solicitudDAO = new SolicitudesDAO();
+            //update solicitud
+            this.setIntReturnValue(solicitudDAO.uploadDocumentos(this.getIdSolicitud(), 
+                                                                this.getFileUpload(), 
+                                                                this.getFileUploadFileName(),
+                                                                this.getFileUploadContentType()));
+            if ( this.getIntReturnValue() > 0 ) {
+               this.setMsg("Archivos adjuntados correctamente.");
+            } else {
+               this.setMsg("Error actualizado el elemento");
+               return "INPUT";
+            }
+
+            
+        } catch (Exception e) {
+           e.printStackTrace();
+           return "INPUT";
+        }
+        
+        return "SUCCESS";
+    }
 }

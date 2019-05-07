@@ -40,11 +40,8 @@
                         <li><a href="CRUDAsignaturas">Asignaturas</a></li>
                         <li><a href="GestionUsuarios">Usuarios</a></li>
                         <li><a href="GestionProvincias">Provincias (hibernate) </a></li>
-                        <li><a href="tree-view.html">Tree View</a></li>
-                        <li><a href="sweetalert.html">SweetAlert</a></li>
-                        <li><a href="calendar.html">Calendar</a></li>
-                        <li><a href="gmaps.html">GMaps</a></li>
-                        <li><a href="counter-up.html">Counter-Up</a></li>
+                        <li><a href="GestionEstados">Estados Solicitud (hibernate)</a></li>
+                        <li><a href="GestionDocumentos">Documentos a solicitar (hibernate)</a></li>
                     </ul>
                 </li>
                 

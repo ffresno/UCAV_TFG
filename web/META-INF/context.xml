@@ -24,6 +24,6 @@
           username="root"
           password=""
           driverClassName="com.mysql.jdbc.Driver"
-          url="jdbc:mysql://localhost:3306/tfgucav"/>
+          url="jdbc:mysql://localhost:3306/BDUCAV"/>
      
 </Context>

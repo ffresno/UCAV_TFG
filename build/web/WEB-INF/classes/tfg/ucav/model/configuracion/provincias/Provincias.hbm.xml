@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 05-may-2019 18:06:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="tfg.ucav.model.configuracion.provincias.Provincias" table="provincias" catalog="tfgucav" optimistic-lock="version">
+    <class name="tfg.ucav.model.configuracion.provincias.Provincias" table="provincias" catalog="BDUCAV" optimistic-lock="version">
         <id name="idProvincia" type="java.lang.Integer">
             <column name="id_provincia" />
             <generator class="identity" />
