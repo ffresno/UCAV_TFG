@@ -144,9 +144,12 @@
                                                             <s:elseif test="solicitudEstados.idEstado==3">
                                                                 <span class="badge badge-success"><s:property value="solicitudEstados.nombre"/></span>
                                                              </s:elseif>
+                                                             <s:elseif test="solicitudEstados.idEstado==4">
+                                                                <span class="badge badge-success"><s:property value="solicitudEstados.nombre"/></span>
+                                                             </s:elseif>
                                                         </td>
                                                         <td align="center">     
-                                                            
+                                                            <!-- Si el estado es 
                                                             <s:if test="solicitudEstados.idEstado==3">
                                                                 <a href="IncluirDocumentos" class="btn btn-primary btn-sm" data-toggle="modal" 
                                                                    data-id="<s:property value="idSolicitud"/>" 
@@ -154,9 +157,12 @@
                                                                     <i class="fa fa-cloud-upload" aria-hidden="true"></i>
                                                                 </a>
                                                              </s:if>
-                                                            <a href="javascript:deleteRecord();" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete">
-                                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                            </a>
+                                                             <s:elseif test="solicitudEstados.idEstado<3">
+                                                                <a href="javascript:deleteRecord();" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete">
+                                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                </a>
+                                                             </s:elseif>
+                                                            
                                                         </td>
                                                     </tr>
                                                 </s:iterator>
@@ -271,8 +277,8 @@
                
                <s:iterator value="listDocumentos" var="documento" status="status">
                     $('#filer_ficheros${status.count}').filer({
-                    limit: 1,
-                    maxSize: 3,
+                    limit: <s:property value ="listDocumentos.size()"/>,
+                    maxSize: 5,
                     extensions: ['jpg', 'jpeg', 'png', 'gif', 'pdf'],
                     changeInput: true,
                     showThumbs: true,

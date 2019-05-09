@@ -6,7 +6,6 @@
 package tfg.ucav.actions.solicitudes;
 
 import com.opensymphony.xwork2.ActionSupport;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,8 +24,6 @@ import tfg.ucav.model.solicitudes.Solicitudes;
 import tfg.ucav.model.usuarios.Users;
 
 import java.io.File;
-import java.io.IOException;
-import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -409,6 +406,7 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
         solicitudesDAO = new SolicitudesDAO();
         this.setListSolicitudes(solicitudesDAO.getSolicitudesByUser(usuario.getIdUser()));
         this.setListDocumentos(solicitudesDAO.getDocumentos());
+        this.setListDocumentos(solicitudesDAO.getDocumentos());
         return "SUCCESS";
         
         //ejecutar el script y volver a generar las clases
@@ -428,6 +426,8 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
            //obtenemos los cursos disponibles. 
            cursosDAO = new CursosDAO();
            this.setListCursos(cursosDAO.getCursos());
+           solicitudesDAO = new SolicitudesDAO();
+           this.setListDocumentos(solicitudesDAO.getDocumentos());
            
            return "SUCCESS";
        } catch (Exception e) {

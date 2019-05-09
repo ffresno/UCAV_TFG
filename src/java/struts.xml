@@ -140,6 +140,8 @@
         
         <action name="UploadDocumentos" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="uploadDocumentos">
             <result name="SUCCESS" type="chain">DashboardStudent</result>
+            <result name="INPUT" type="chain">DashboardStudent</result>
+            
         </action>
     </package>
     

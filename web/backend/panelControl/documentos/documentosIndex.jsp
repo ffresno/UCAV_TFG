@@ -120,7 +120,7 @@
                                                 </div>
                                             </div>
                                         </div> 
-                                        <h3><i class="fa fa-folder"></i> Existen <s:property value ="listdocumentos.size()"/> Documentos</h3>								
+                                        <h3><i class="fa fa-folder"></i> Existen <s:property value ="listDocumentos.size()"/> Documentos</h3>								
                                     </div>
                                     <!-- end card-header -->	
 
