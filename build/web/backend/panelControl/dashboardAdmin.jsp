@@ -87,8 +87,8 @@
                         <br>
                         <s:property value="varUrl" />
                     </div>
-                    
-                    <s:if test="intReturnValue">
+                        <h1><s:property value="intReturnValue"/></h1>
+                        <s:if test="intReturnValue">
                             <div class="row">
                             <s:if test="intReturnValue>0">
                                 <div class="col-xl-12 alert alert-success" role="alert">

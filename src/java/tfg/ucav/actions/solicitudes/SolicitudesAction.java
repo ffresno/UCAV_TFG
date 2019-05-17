@@ -623,6 +623,7 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
 
         try {
             //this.setIntReturnValue(solicitudDAO.rejectSolicitud(this.getIdSolicitud()));
+            this.setIntReturnValue(0);
             if ( this.getIntReturnValue() > 0 ) {
                this.setMsg("La solicitud ha sido denegada correctamente. Se ha informado al solicitante");
             } else {
