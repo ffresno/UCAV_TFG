@@ -142,7 +142,9 @@
                                                             <strong><s:property value="nombre"/> </strong>
                                                         </td>
                                                         <td>
-                                                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_edit_${provincia.idProvincia}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_edit_${provincia.idProvincia}">
+                                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                            </a>
                                                             <div class="modal fade custom-modal" tabindex="-1" role="dialog" aria-hidden="true" id="modal_edit_${provincia.idProvincia}">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">

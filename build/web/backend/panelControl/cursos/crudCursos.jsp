@@ -38,8 +38,7 @@
         <s:include value = "../../../includes/topBarNav.jsp"/>
         <!-- End Navigation -->
 
-        <s:set var="opcionMenu" value="'config'"/>
-        <s:set var="opcionSubMenu" value="'cursos'"/>
+        
         <!-- Left Sidebar -->
         <s:include value="../../../includes/admin/leftNavAdmin.jsp"/>
         <!-- End Sidebar -->

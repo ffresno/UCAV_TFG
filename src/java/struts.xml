@@ -14,7 +14,7 @@
         </action>
         
         <action name="CheckLogin" class="tfg.ucav.actions.login.CheckLoginAction">
-                <result name="SUCCESS_ADMIN">backend/panelControl/dashboardAdmin.jsp</result>
+                <result name="SUCCESS_ADMIN" type="chain">DashboardAdmin</result>
                 <result name="SUCCES_STUDENT" type="chain">DashboardStudent</result>
                 <result name="INPUT">frontend/login/login.jsp</result>
         </action>
@@ -41,8 +41,9 @@
         
         
         <!-- BACKEND --> 
-        <action name="DashboardAdmin">
-            <result>backend/panelControl/dashboardAdmin.jsp</result>
+        <action name="DashboardAdmin" class="tfg.ucav.actions.dashboard.DashboardAction">
+            <result name="SUCCESS">backend/panelControl/dashboardAdmin.jsp</result>
+            <result name="INPUT">backend/panelControl/dashboardAdmin.jsp</result>
         </action>
         
         <!-- BACKEND -> CONFIGURACIÓN --> 
@@ -133,7 +134,24 @@
         </action>
         <action name="GuardarSolicitud" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="guardarSolicitud">
             <result name="SUCCESS" type="chain">DashboardStudent</result>
+            <result name="INPUT" type="chain">DashboardStudent</result>
         </action>
+        <action name="BorrarSolicitud" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="borrarSolicitud">
+             <result name="SUCCESS" type="chain">DashboardStudent</result>
+             <result name="INPUT" type="chain">DashboardStudent</result>
+        </action>
+         <action name="EditarSolicitud" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="editarSolicitud">
+             <result name="SUCCESS">backend/solicitudes/detalleSolicitud.jsp</result>
+        </action>
+        <action name="AceptarSolicitud" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="aceptarSolicitud">
+            <result name="SUCCESS" type="chain">DashboardAdmin</result>
+            <result name="INPUT" type="chain">DashboardAdmin</result>
+        </action>
+        <action name="DenegarSolicitud" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="denegarSolicitud">
+            <result name="SUCCESS" type="chain">DashboardAdmin</result>
+            <result name="INPUT" type="chain">DashboardAdmin</result>
+        </action>
+                
         <action name="IncluirDocumentos" class="tfg.ucav.actions.solicitudes.SolicitudesAction" method="incluirDocumentos">
             <result name="SUCCESS" >backend/solicitudes/incluirDocumentos.jsp</result>
         </action>

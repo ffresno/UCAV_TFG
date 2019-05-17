@@ -8,9 +8,16 @@ package tfg.ucav.dao.configuracion.usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import static tfg.ucav.dao.configuracion.provincias.ProvinciasDAO.myConnectionHibernate;
+import tfg.ucav.model.configuracion.provincias.Provincias;
 import tfg.ucav.model.usuarios.Users;
 
 /**
@@ -119,6 +126,34 @@ public class UsuariosDAO {
         }
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public Users getUserById(int id) throws Exception {
+        Users user = null;
+        Transaction tx = null; 
+        Session session = myConnectionHibernate();
+        
+        try{
+            tx = session.beginTransaction();
+            //String query = "FROM Solicitudes WHERE iduser = ?";
+            Query query = session.createQuery("FROM Users WHERE id = ?");
+            query.setInteger(0, id);
+            user = (Users) query.uniqueResult();
+            //listSolicitudes.size();
+            tx.commit();
+          } catch (HibernateException e) {
+             if (tx!=null) tx.rollback();
+             e.printStackTrace(); 
+          } finally {
+             session.close(); 
+          }
+        return user;
+        
+    }
    
     
 }

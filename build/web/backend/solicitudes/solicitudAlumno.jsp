@@ -235,7 +235,7 @@
                                     <small class="form-text text-muted">Introduce el titulo que aportas para poder acceder a este título</small>
                                 </div>
                                 <div class="form-group">
-                                    <label>Centro de procedencia <span class="text-danger">*</span></label>
+                                    <label>Centro de procedencia </label>
                                     <input type="text" class="form-control" id="procedencia" placeholder="Centro de procedencia" name="centroProcedencia" data-parsley-trigger="change" data-parsley-length="[1, 100]"/>
                                     <small class="form-text text-muted">Introduce el Centro de procedencia de los estudios aportados</small>
                                 </div>

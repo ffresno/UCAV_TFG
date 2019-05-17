@@ -17,8 +17,7 @@
     <div class="sidebar-inner leftscroll">
 
         <div id="sidebar-menu">
-                        <h1><s:property value="opcionMenu"/></h1>
-                        <h1><s:property value="opcionSubMenu"/></h1>
+              
             <ul>
 
                 <li class="submenu">
@@ -26,22 +25,26 @@
                         <s:if test="opcionMenu==inicio">
                             class="active"
                         </s:if>
-                    href="DashboardAdmin"><i class="fa fa-fw fa-home"></i> <span> Inicio </span> <span class="menu-arrow"></span></a>
-                    <ul class="list-unstyled">
-                        <li><a href="DashboardAdmin">Registros</a></li>
-                        <li><a href="tables-datatable.html">Matrículas</a></li>
-                    </ul>
+                    href="DashboardAdmin"><i class="fa fa-fw fa-home"></i> <span> Inicio </span> </a>
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fa fa-fw fa-tv"></i> <span> Configuración </span> <span class="menu-arrow"></span></a>
+                    <a 
+                        <s:if test="opcionMenu==config">
+                            class="active"
+                        </s:if>
+                        href="#"><i class="fa fa-fw fa-tv"></i> <span> Configuración </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="GestionCursos">Cursos</a></li>
-                        <li><a href="CRUDAsignaturas">Asignaturas</a></li>
                         <li><a href="GestionUsuarios">Usuarios</a></li>
+                        <li><a 
+                                <s:if test="opcionSubMenu==cursos">
+                                    class="active"
+                                </s:if>
+                                href="GestionCursos">Cursos</a></li>
                         <li><a href="GestionProvincias">Provincias (hibernate) </a></li>
                         <li><a href="GestionEstados">Estados Solicitud (hibernate)</a></li>
                         <li><a href="GestionDocumentos">Documentos a solicitar (hibernate)</a></li>
+                        <li><a href="javascript:alert('No implementado');">Asignaturas</a></li>
                     </ul>
                 </li>
                 

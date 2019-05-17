@@ -18,7 +18,6 @@ import javax.sql.DataSource;
 import org.apache.struts2.dispatcher.SessionMap;
 
 import tfg.ucav.model.usuarios.Users;
-import tfg.ucav.util.Mailer;
 
 
 /**

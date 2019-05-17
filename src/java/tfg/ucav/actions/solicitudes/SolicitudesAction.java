@@ -24,6 +24,7 @@ import tfg.ucav.model.solicitudes.Solicitudes;
 import tfg.ucav.model.usuarios.Users;
 
 import java.io.File;
+import tfg.ucav.dao.configuracion.usuarios.UsuariosDAO;
 
 /**
  *
@@ -31,7 +32,7 @@ import java.io.File;
  */
 public class SolicitudesAction extends ActionSupport implements SessionAware {
     
-    int intReturnValue;
+    int intReturnValue = 0;
     String msg;
     List<Provincias> listProvincias = new ArrayList<>();
     List<Curso> cursosDisponibles = new ArrayList<>();
@@ -205,21 +206,7 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
         this.listSolicitudes = solis;
     }
 
-    public ProvinciasDAO getProvinciasDAO() {
-        return provinciasDAO;
-    }
-
-    public void setProvinciasDAO(ProvinciasDAO provinciasDAO) {
-        this.provinciasDAO = provinciasDAO;
-    }
-
-    public CursosDAO getCursosDAO() {
-        return cursosDAO;
-    }
-
-    public void setCursosDAO(CursosDAO cursosDAO) {
-        this.cursosDAO = cursosDAO;
-    }
+   
 
     public Solicitudes getSolicitud() {
         return solicitud;
@@ -406,7 +393,6 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
         solicitudesDAO = new SolicitudesDAO();
         this.setListSolicitudes(solicitudesDAO.getSolicitudesByUser(usuario.getIdUser()));
         this.setListDocumentos(solicitudesDAO.getDocumentos());
-        this.setListDocumentos(solicitudesDAO.getDocumentos());
         return "SUCCESS";
         
         //ejecutar el script y volver a generar las clases
@@ -462,6 +448,8 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
            //Obtenemos las provincias
            //provinciasDAO = new ProvinciasDAO();
            //this.setListProvincias(provinciasDAO.getProvincias());
+           //cursosDAO = new CursosDAO();
+           //this.setListCursos(cursosDAO.getCursos());
            //obtenemos los cursos disponibles. 
            //cursosDAO = new CursosDAO();
            //this.setListCursos(cursosDAO.getCursos());
@@ -484,11 +472,19 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
             solicitud.setTelefono2(this.getTelefono2());
             //Obtenemos el usuario de la sesion 
             Users usuario = (Users) session.get("appUser");
-            solicitud.setUsers(usuario);
+            UsuariosDAO userDAO = new UsuariosDAO();
+            Users usuario2 = userDAO.getUserById(usuario.getIdUser());
+            solicitud.setUsers(usuario2);
+            session.clear();
+            session.put("appUser", usuario2);
+            //solicitud.setUsers(usuario);
             //Datos de la provincia
-            Provincias prov = new Provincias();
-            prov.setIdProvincia(this.getIdProvincia());
-            solicitud.setProvincias(prov);
+            //Provincias prov = new Provincias();
+            //prov.setIdProvincia(this.getIdProvincia());
+            
+            //solicitud.setProvincias(prov);
+            provinciasDAO = new ProvinciasDAO();
+            solicitud.setProvincias(provinciasDAO.getProvinciasById(this.getIdProvincia()));
             
             //set estado a pendiente
             SolicitudEstados SoliciEstado = new SolicitudEstados();
@@ -496,9 +492,11 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
             solicitud.setSolicitudEstados(SoliciEstado);
             
             //Set detalle a la solicitud
-            Curso curso = new Curso();
-            curso.setIdCurso(this.getIdCurso());
-            solicitudDetalle.setCurso(curso);
+            //Curso curso = new Curso();
+            //curso.setIdCurso(this.getIdCurso());
+            cursosDAO = new CursosDAO();
+            solicitudDetalle.setCurso(cursosDAO.getCursoById(this.getIdCurso()));
+            
             
             solicitudDetalle.setEstudiosAportados(this.getEstudiosAportados());
             solicitudDetalle.setCentroProcedencia(this.getCentroProcedencia());
@@ -521,11 +519,13 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
             if ( this.getIntReturnValue() > 0 ) {
                this.setMsg("Solicitud creada correctamente. Puede consultarla en el listado de solicitudes que ha realizado");
             } else {
-               this.setMsg("Error actualizado el elemento");
+               this.setIntReturnValue(0);
+               this.setMsg("Error el elemento");
                return "INPUT";
             }
             
        } catch (Exception e) {
+           this.setIntReturnValue(0);
            e.printStackTrace();
            return "INPUT";
        }
@@ -559,5 +559,81 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
         }
         
         return "SUCCESS";
+    }
+    
+    public String borrarSolicitud() {
+        
+        SolicitudesDAO solicitudDAO = new SolicitudesDAO();
+
+        try {
+            this.setIntReturnValue(solicitudDAO.deleteSolicitud(this.getIdSolicitud()));
+            if ( this.getIntReturnValue() > 0 ) {
+               this.setMsg("Elemento borrado correctamente");
+            } else {
+               this.setMsg("Error borrando el elemento");
+               return "INPUT";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "SUCCESS";
+        
+    }
+    
+    public String editarSolicitud() throws Exception {
+        
+        try {
+            SolicitudesDAO solicitudDAO = new SolicitudesDAO();
+            List<Solicitudes> list = new ArrayList<>();
+            Solicitudes sol = solicitudDAO.getSolicitudById(idSolicitud);
+            list.add(sol);
+            this.setListSolicitudes(list);
+            cursosDAO = new CursosDAO();
+            this.setListCursos(cursosDAO.getCursos());
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "SUCCESS";
+    }
+    
+    public String aceptarSolicitud() {
+        
+        SolicitudesDAO solicitudDAO = new SolicitudesDAO();
+
+        try {
+            this.setIntReturnValue(solicitudDAO.acceptSolicitud(this.getIdSolicitud()));
+            if ( this.getIntReturnValue() > 0 ) {
+               this.setMsg("La solicitud ha sido aceptada correctamente. Se ha informado al solicitante");
+            } else {
+               this.setMsg("Error aceptando la solicitud");
+               return "INPUT";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            this.setIntReturnValue(1);
+        }
+        return "SUCCESS";
+        
+    }
+    
+    public String denegarSolicitud() {
+        
+        SolicitudesDAO solicitudDAO = new SolicitudesDAO();
+
+        try {
+            //this.setIntReturnValue(solicitudDAO.rejectSolicitud(this.getIdSolicitud()));
+            if ( this.getIntReturnValue() > 0 ) {
+               this.setMsg("La solicitud ha sido denegada correctamente. Se ha informado al solicitante");
+            } else {
+               this.setMsg("Error denegando la solicitud");
+               return "INPUT";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            this.setIntReturnValue(1);
+        }
+        return "SUCCESS";
+        
     }
 }

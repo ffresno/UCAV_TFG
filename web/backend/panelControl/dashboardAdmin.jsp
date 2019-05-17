@@ -31,6 +31,9 @@
     <!-- INCLUDE CSS for this page -->
     <s:include value = "../../includes/headerCss.jsp"/>
     <!-- END CSS for this page -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
 </head>
 
 <body class="adminbody">
@@ -60,7 +63,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="breadcrumb-holder">
-                                <h1 class="main-title float-left">Registros y matrículas Pendientes</h1>
+                                <h1 class="main-title float-left">Panel de control</h1>
                                 <ol class="breadcrumb float-right">
                                     <li class="breadcrumb-item active">Inicio</li>
                                 </ol>
@@ -70,9 +73,7 @@
                     </div>
                     <!-- end row -->
                     <div class="row">
-                        <h1>Usuario: <s:property value="username"/> <br>
-                            Contraseña:<s:property value="password"/> 
-                        <br>
+                        
                           opcion menu = <s:property value="opcionMenu"/>
                                 <br>
                           opcion Submenu = <s:property value="opcionSubMenu"/> 
@@ -85,503 +86,114 @@
                         <s:set var="varUrl" value="%{'http://www.mkyong.com'}" />
                         <br>
                         <s:property value="varUrl" />
-                        </h1>
                     </div>
                     
-                    
+                    <s:if test="intReturnValue">
+                            <div class="row">
+                            <s:if test="intReturnValue>0">
+                                <div class="col-xl-12 alert alert-success" role="alert">
+                                <h4 class="alert-heading">Correcto!</h4>
+                                <p><s:property value="msg" /></p>
+                                 </div>
+                            </s:if>
+                            <s:else>
+                                <div class="col-xl-12 alert alert-danger" role="alert">
+                                <h4 class="alert-heading">Aviso!</h4>
+                                <p><s:property value="msg" /></p>
+                                 </div>
+                            </s:else>
+                            </div>
+                        </s:if>
                     
                            
-                    
-                    <!-- Registros pendientes -->
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">						
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <h3><i class="fa fa-table"></i> Últimos registros </h3>
-                                    The searching functionality that is provided by DataTables is very useful for quickly search through the information in the table - however the search is global, and you may wish to present controls to search on specific columns only. <a target="_blank" href="https://datatables.net/examples/api/multi_filter.html">(more details)</a>
-                                </div>
-
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table id="registros" class="table table-bordered table-hover display">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nombre y Apellidos</th>
-                                                    <th>email</th>
-                                                    <th>Nº Autorización</th>
-                                                    <th>Curso Escolar</th>
-                                                    <th>Estado</th>
-                                                    <th>Acciones</th>
-                                                </tr>
-                                            </thead>									
-                                            <tbody>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr><tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>test@email.com</td>
-                                                    <td>1111111</td>
-                                                    <td>2018/2019</td>
-                                                    <td>Pendiente</td>
-                                                    <td>Aceptar | Borrar</td>
-                                                </tr>
-                                                
-                                                
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>							
-                            </div><!-- end card-->					
-                        </div>
-
-                    </div>			
-                    <!-- End Registros pendientes -->
-
                     <!-- MAtriculas -->
                       <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">						
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <h3><i class="fa fa-table"></i> Últimas matrículas</h3>
-                                    The searching functionality that is provided by DataTables is very useful for quickly search through the information in the table - however the search is global, and you may wish to present controls to search on specific columns only. <a target="_blank" href="https://datatables.net/examples/api/multi_filter.html">(more details)</a>
+                                    En el siguiente listdo aparecen las ultimas matriculas realizadas en el sistema.
                                 </div>
 
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table id="matriculas" class="table table-bordered table-hover display">
+                                        <table id="solicitudes" class="table table-bordered table-hover display">
                                             <thead>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
+                                                    <th style="width:5%">#</th>
+                                                    <th>Apellidos, Nombre</th>
+                                                    <th>Localidad</th>
+                                                    <th>Curso</th>
+                                                    <th>Estado</th>
+                                                    <th>Acciones</th>
                                                 </tr>
                                             </thead>										
                                             <tbody>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Garrett Winters</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>63</td>
-                                                    <td>2011/07/25</td>
-                                                    <td>$170,750</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ashton Cox</td>
-                                                    <td>Junior Technical Author</td>
-                                                    <td>San Francisco</td>
-                                                    <td>66</td>
-                                                    <td>2009/01/12</td>
-                                                    <td>$86,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Cedric Kelly</td>
-                                                    <td>Senior Javascript Developer</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>22</td>
-                                                    <td>2012/03/29</td>
-                                                    <td>$433,060</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Airi Satou</td>
-                                                    <td>Accountant</td>
-                                                    <td>Tokyo</td>
-                                                    <td>33</td>
-                                                    <td>2008/11/28</td>
-                                                    <td>$162,700</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Brielle Williamson</td>
-                                                    <td>Integration Specialist</td>
-                                                    <td>New York</td>
-                                                    <td>61</td>
-                                                    <td>2012/12/02</td>
-                                                    <td>$372,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Herrod Chandler</td>
-                                                    <td>Sales Assistant</td>
-                                                    <td>San Francisco</td>
-                                                    <td>59</td>
-                                                    <td>2012/08/06</td>
-                                                    <td>$137,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Rhona Davidson</td>
-                                                    <td>Integration Specialist</td>
-                                                    <td>Tokyo</td>
-                                                    <td>55</td>
-                                                    <td>2010/10/14</td>
-                                                    <td>$327,900</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Colleen Hurst</td>
-                                                    <td>Javascript Developer</td>
-                                                    <td>San Francisco</td>
-                                                    <td>39</td>
-                                                    <td>2009/09/15</td>
-                                                    <td>$205,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sonya Frost</td>
-                                                    <td>Software Engineer</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>23</td>
-                                                    <td>2008/12/13</td>
-                                                    <td>$103,600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Jena Gaines</td>
-                                                    <td>Office Manager</td>
-                                                    <td>London</td>
-                                                    <td>30</td>
-                                                    <td>2008/12/19</td>
-                                                    <td>$90,560</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Quinn Flynn</td>
-                                                    <td>Support Lead</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>22</td>
-                                                    <td>2013/03/03</td>
-                                                    <td>$342,000</td>
-                                                </tr>										
-                                                <tr>
-                                                    <td>Tatyana Fitzpatrick</td>
-                                                    <td>Regional Director</td>
-                                                    <td>London</td>
-                                                    <td>19</td>
-                                                    <td>2010/03/17</td>
-                                                    <td>$385,750</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Michael Silva</td>
-                                                    <td>Marketing Designer</td>
-                                                    <td>London</td>
-                                                    <td>66</td>
-                                                    <td>2012/11/27</td>
-                                                    <td>$198,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Paul Byrd</td>
-                                                    <td>Chief Financial Officer (CFO)</td>
-                                                    <td>New York</td>
-                                                    <td>64</td>
-                                                    <td>2010/06/09</td>
-                                                    <td>$725,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Gloria Little</td>
-                                                    <td>Systems Administrator</td>
-                                                    <td>New York</td>
-                                                    <td>59</td>
-                                                    <td>2009/04/10</td>
-                                                    <td>$237,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Bradley Greer</td>
-                                                    <td>Software Engineer</td>
-                                                    <td>London</td>
-                                                    <td>41</td>
-                                                    <td>2012/10/13</td>
-                                                    <td>$132,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Dai Rios</td>
-                                                    <td>Personnel Lead</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>35</td>
-                                                    <td>2012/09/26</td>
-                                                    <td>$217,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Jenette Caldwell</td>
-                                                    <td>Development Lead</td>
-                                                    <td>New York</td>
-                                                    <td>30</td>
-                                                    <td>2011/09/03</td>
-                                                    <td>$345,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Yuri Berry</td>
-                                                    <td>Chief Marketing Officer (CMO)</td>
-                                                    <td>New York</td>
-                                                    <td>40</td>
-                                                    <td>2009/06/25</td>
-                                                    <td>$675,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Caesar Vance</td>
-                                                    <td>Pre-Sales Support</td>
-                                                    <td>New York</td>
-                                                    <td>21</td>
-                                                    <td>2011/12/12</td>
-                                                    <td>$106,450</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Doris Wilder</td>
-                                                    <td>Sales Assistant</td>
-                                                    <td>Sidney</td>
-                                                    <td>23</td>
-                                                    <td>2010/09/20</td>
-                                                    <td>$85,600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Angelica Ramos</td>
-                                                    <td>Chief Executive Officer (CEO)</td>
-                                                    <td>London</td>
-                                                    <td>47</td>
-                                                    <td>2009/10/09</td>
-                                                    <td>$1,200,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Gavin Joyce</td>
-                                                    <td>Developer</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>42</td>
-                                                    <td>2010/12/22</td>
-                                                    <td>$92,575</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Jennifer Chang</td>
-                                                    <td>Regional Director</td>
-                                                    <td>Singapore</td>
-                                                    <td>28</td>
-                                                    <td>2010/11/14</td>
-                                                    <td>$357,650</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Brenden Wagner</td>
-                                                    <td>Software Engineer</td>
-                                                    <td>San Francisco</td>
-                                                    <td>28</td>
-                                                    <td>2011/06/07</td>
-                                                    <td>$206,850</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Fiona Green</td>
-                                                    <td>Chief Operating Officer (COO)</td>
-                                                    <td>San Francisco</td>
-                                                    <td>48</td>
-                                                    <td>2010/03/11</td>
-                                                    <td>$850,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Shou Itou</td>
-                                                    <td>Regional Marketing</td>
-                                                    <td>Tokyo</td>
-                                                    <td>20</td>
-                                                    <td>2011/08/14</td>
-                                                    <td>$163,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Michelle House</td>
-                                                    <td>Integration Specialist</td>
-                                                    <td>Sidney</td>
-                                                    <td>37</td>
-                                                    <td>2011/06/02</td>
-                                                    <td>$95,400</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Suki Burks</td>
-                                                    <td>Developer</td>
-                                                    <td>London</td>
-                                                    <td>53</td>
-                                                    <td>2009/10/22</td>
-                                                    <td>$114,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Prescott Bartlett</td>
-                                                    <td>Technical Author</td>
-                                                    <td>London</td>
-                                                    <td>27</td>
-                                                    <td>2011/05/07</td>
-                                                    <td>$145,000</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Gavin Cortez</td>
-                                                    <td>Team Leader</td>
-                                                    <td>San Francisco</td>
-                                                    <td>22</td>
-                                                    <td>2008/10/26</td>
-                                                    <td>$235,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Martena Mccray</td>
-                                                    <td>Post-Sales support</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>46</td>
-                                                    <td>2011/03/09</td>
-                                                    <td>$324,050</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Unity Butler</td>
-                                                    <td>Marketing Designer</td>
-                                                    <td>San Francisco</td>
-                                                    <td>47</td>
-                                                    <td>2009/12/09</td>
-                                                    <td>$85,675</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Howard Hatfield</td>
-                                                    <td>Office Manager</td>
-                                                    <td>San Francisco</td>
-                                                    <td>51</td>
-                                                    <td>2008/12/16</td>
-                                                    <td>$164,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hope Fuentes</td>
-                                                    <td>Secretary</td>
-                                                    <td>San Francisco</td>
-                                                    <td>41</td>
-                                                    <td>2010/02/12</td>
-                                                    <td>$109,850</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Vivian Harrell</td>
-                                                    <td>Financial Controller</td>
-                                                    <td>San Francisco</td>
-                                                    <td>62</td>
-                                                    <td>2009/02/14</td>
-                                                    <td>$452,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Timothy Mooney</td>
-                                                    <td>Office Manager</td>
-                                                    <td>London</td>
-                                                    <td>37</td>
-                                                    <td>2008/12/11</td>
-                                                    <td>$136,200</td>
-                                                </tr>										
-                                                <tr>
-                                                    <td>Bruno Nash</td>
-                                                    <td>Software Engineer</td>
-                                                    <td>London</td>
-                                                    <td>38</td>
-                                                    <td>2011/05/03</td>
-                                                    <td>$163,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sakura Yamamoto</td>
-                                                    <td>Support Engineer</td>
-                                                    <td>Tokyo</td>
-                                                    <td>37</td>
-                                                    <td>2009/08/19</td>
-                                                    <td>$139,575</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Thor Walton</td>
-                                                    <td>Developer</td>
-                                                    <td>New York</td>
-                                                    <td>61</td>
-                                                    <td>2013/08/11</td>
-                                                    <td>$98,540</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Finn Camacho</td>
-                                                    <td>Support Engineer</td>
-                                                    <td>San Francisco</td>
-                                                    <td>47</td>
-                                                    <td>2009/07/07</td>
-                                                    <td>$87,500</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Serge Baldwin</td>
-                                                    <td>Data Coordinator</td>
-                                                    <td>Singapore</td>
-                                                    <td>64</td>
-                                                    <td>2012/04/09</td>
-                                                    <td>$138,575</td>
-                                                </tr>										
-                                                <tr>
-                                                    <td>Cara Stevens</td>
-                                                    <td>Sales Assistant</td>
-                                                    <td>New York</td>
-                                                    <td>46</td>
-                                                    <td>2011/12/06</td>
-                                                    <td>$145,600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Hermione Butler</td>
-                                                    <td>Regional Director</td>
-                                                    <td>London</td>
-                                                    <td>47</td>
-                                                    <td>2011/03/21</td>
-                                                    <td>$356,250</td>
-                                                </tr>
+                                                <s:iterator value="listSolicitudes" var="solicitud" status="status">
+                                                    <tr style="text-transform: uppercase;">
+                                                        <td>${status.count}</td>
+                                                        <td>
+                                                            <a href="" class="btn btn-primary btn-sm" data-placement="top" data-toggle="tooltip" data-title="Ver Solicitud">
+                                                                 <i class="fas fa-eye"></i> <s:property value="apellidos"/>, <s:property value="nombre"/>
+                                                                </a>
+                                                            <br>(<s:property value="provincias.nombre"/>)
+                                                        </td>
+                                                        <td>
+                                                            <s:property value="ciudad"/><br>
+                                                            (<s:property value="provincias.nombre"/>)
+                                                        </td>
+                                                        <s:iterator value="solicitudDetalles" var="detalle" status="status">
+                                                            <td>
+                                                                <b><s:property value="curso.nombre"/></b>
+                                                            </td>
+                                                        </s:iterator>
+                                                        <td>
+                                                            <s:if test="solicitudEstados.idEstado==1">
+                                                                <span class="badge badge-primary"><s:property value="solicitudEstados.nombre"/></span>
+                                                            </s:if>
+                                                            <s:elseif test="solicitudEstados.idEstado==2">
+                                                                <span class="badge badge-danger"><s:property value="solicitudEstados.nombre"/></span>
+                                                            </s:elseif>
+                                                            <s:elseif test="solicitudEstados.idEstado==3">
+                                                                <span class="badge badge-success"><s:property value="solicitudEstados.nombre"/></span>
+                                                             </s:elseif>
+                                                             <s:elseif test="solicitudEstados.idEstado==4">
+                                                                <span class="badge badge-success"><s:property value="solicitudEstados.nombre"/></span>
+                                                             </s:elseif>
+                                                        </td>
+                                                        <td align="center">  
+                                                            <!-- PENDIENTE -->
+                                                            <s:if test="solicitudEstados.idEstado==1">
+                                                               
+                                                                <a href="javascript:aceptarSolicitud(<s:property value="idSolicitud"/>);" class="btn btn-success btn-sm" data-placement="top" data-toggle="tooltip" data-title="Aceptar Solicitud">
+                                                                <i class="fas fa-clipboard-check"></i>
+                                                                </a>
+                                                                <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-id="<s:property value="idSolicitud"/>" 
+                                                                   data-target="#modal_introducir_motivo" id="openModalDenegar" title="Anular Solicitud" >
+                                                                    <i class="fas fa-times"></i>
+                                                                </a>
+                                                            </s:if>
+                                                            <!-- denegada -->
+                                                            <s:elseif test="solicitudEstados.idEstado==2">
+                                                                 <a href="javascript:aceptarSolicitud();" class="btn btn-success btn-sm" data-placement="top" data-toggle="tooltip" data-title="Aceptar Solicitud">
+                                                                <i class="fas fa-clipboard-check"></i>
+                                                                </a>
+                                                            </s:elseif>
+                                                            <!-- aceptada -->
+                                                            <s:elseif test="solicitudEstados.idEstado==3">
+                                                                 <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-id="<s:property value="idSolicitud"/>" 
+                                                                   data-target="#modal_introducir_motivo" id="openModalDenegar" title="Anular Solicitud" >
+                                                                    <i class="fas fa-times"></i>
+                                                                </a>
+                                                             </s:elseif>
+                                                             <!-- validada -->
+                                                             <s:elseif test="solicitudEstados.idEstado==4">
+                                                                ver botones
+                                                             </s:elseif>
+                                                             
+                                                        </td>
+                                                    </tr>
+                                                </s:iterator>
                                             </tbody>
                                         </table>
                                     </div>
@@ -604,6 +216,42 @@
 	<!-- END content-page -->
     
         <s:include value="../../includes/footer.jsp"/>
+ 
+<div class="modal fade custom-modal" tabindex="-1" role="dialog" aria-labelledby="modal_introducir_motivo" aria-hidden="true" id="modal_introducir_motivo">
+	<div class="modal-dialog">
+	    <div class="modal-content">
+	        <form action="DenegarSolicitud" method="post" enctype="multipart/form-data">
+
+	            <div class="modal-header">
+	                <h5 class="modal-title">Añadir motivo de denegación</h5>
+	                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>          	
+	            </div>
+
+	            <div class="modal-body">                
+
+	                <div class="row">
+	                    <div class="col-lg-12">
+	                        <div class="form-group">
+	                            <label>Motivo <span class="text-danger">*</span></label>
+	                            <textarea class="form-control" name="motivo" required placeholder="Introduce con detalles el motivo de la denegación" autofocus/></textarea>
+	                        </div>
+	                    </div>
+	                </div>
+
+	            </div>             
+
+	            <div class="modal-footer">
+                        <input type="hidden" id="idSolicitud" name="idSolicitud">
+	                <button type="submit" class="btn btn-primary">Guardar</button>
+	            </div>
+
+	        </form>	
+
+	    </div>
+	</div>
+	</div> 
+
+
 
 </div>
 <!-- END main -->
@@ -619,10 +267,33 @@
         // START CODE Individual column searching (text inputs) DATA TABLE 		
         $(document).ready(function() {
             
-		$('#registros').DataTable();
-                $('#matriculas').DataTable();
+                $('#solicitudes').dataTable( {
+                    "language": {
+                        "sUrl": "assets/js/es/dataTablesSpanish.txt"
+                    }
+                } );
                 
         } );
+        
+        $(document).on("click", "#openModalDenegar", function () {
+                var idSolicitud = $(this).data('id');
+                $(".modal-body #idSolicitud").val( idSolicitud );
+                // As pointed out in comments, 
+                // it is unnecessary to have to manually call the modal.
+                // $('#addBookDialog').modal('show');
+           });
+        
+        function aceptarSolicitud (id)
+        {
+            if (confirm('¿Estás seguro que quieres aceptar la solicitud?')) {
+                window.location.href = 'AceptarSolicitud?idSolicitud='+id;
+            }
+        }
+        function denegarSolicitud(id) {
+            if (confirm("¿Estás seguro que quieres denegar la solicitud?")) {
+                window.location.href = 'DenegarSolicitud?idSolicitud='+id;
+            }
+        }
         // END CODE Individual column searching (text inputs) DATA TABLE 	 	
 	</script>	
 <!-- END Java Script for this page -->

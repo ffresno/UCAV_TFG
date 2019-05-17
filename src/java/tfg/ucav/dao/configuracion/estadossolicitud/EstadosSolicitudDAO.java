@@ -7,12 +7,15 @@ package tfg.ucav.dao.configuracion.estadossolicitud;
 
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import static tfg.ucav.dao.solicitudes.SolicitudesDAO.myConnectionHibernate;
 import tfg.ucav.model.configuracion.provincias.Provincias;
 import tfg.ucav.model.solicitudes.SolicitudEstados;
+import tfg.ucav.model.solicitudes.Solicitudes;
 
 /**
  *
@@ -78,6 +81,35 @@ public class EstadosSolicitudDAO {
          session.close(); 
       }
    }
+    
+    /**
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public SolicitudEstados getEstadoById(int id) throws Exception {
+        SolicitudEstados estado = null;
+        Transaction tx = null; 
+        Session session = myConnectionHibernate();
+        
+        try{
+            tx = session.beginTransaction();
+            //String query = "FROM Solicitudes WHERE iduser = ?";
+            Query query = session.createQuery("FROM SolicitudEstados WHERE id = ?");
+            query.setInteger(0, id);
+            estado = (SolicitudEstados) query.uniqueResult();
+            //listSolicitudes.size();
+            tx.commit();
+          } catch (HibernateException e) {
+             if (tx!=null) tx.rollback();
+             e.printStackTrace(); 
+          } finally {
+             session.close(); 
+          }
+        return estado;
+        
+    }
     
     
     

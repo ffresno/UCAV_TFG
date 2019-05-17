@@ -12,10 +12,10 @@
                 <column name="id_solicitud" />
             </key-property>
         </composite-id>
-        <many-to-one name="documentos" class="tfg.ucav.model.solicitudes.Documentos" update="false" insert="false" fetch="select">
+        <many-to-one name="documentos" class="tfg.ucav.model.solicitudes.Documentos" lazy="false" update="false" insert="false" fetch="select">
             <column name="id_documento" not-null="true" />
         </many-to-one>
-        <many-to-one name="solicitudes" class="tfg.ucav.model.solicitudes.Solicitudes" update="false" insert="false" fetch="select">
+        <many-to-one name="solicitudes" class="tfg.ucav.model.solicitudes.Solicitudes" lazy="false" update="false" insert="false" fetch="select">
             <column name="id_solicitud" not-null="true" />
         </many-to-one>
         <property name="rutaDocumento" type="string">

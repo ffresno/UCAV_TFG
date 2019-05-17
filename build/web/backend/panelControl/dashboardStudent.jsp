@@ -64,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <h1>devuelve:<s:property value="intReturnValue"/></h1>
                         <s:if test="intReturnValue">
                             <div class="row">
                             <s:if test="intReturnValue>0">
@@ -134,7 +134,6 @@
                                                         </s:iterator>
                                                         <td>2018/2019</td>
                                                         <td>
-                                                            
                                                             <s:if test="solicitudEstados.idEstado==1">
                                                                 <span class="badge badge-primary"><s:property value="solicitudEstados.nombre"/></span>
                                                             </s:if>
@@ -149,7 +148,11 @@
                                                              </s:elseif>
                                                         </td>
                                                         <td align="center">     
-                                                            <!-- Si el estado es 
+                                                            <!-- Si el estado es aceptada --> 
+                                                           
+                                                            <a href="javascript:editarSolicitud(<s:property value="idSolicitud"/>);" class="btn btn-primary btn-sm">
+                                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                            </a>
                                                             <s:if test="solicitudEstados.idEstado==3">
                                                                 <a href="IncluirDocumentos" class="btn btn-primary btn-sm" data-toggle="modal" 
                                                                    data-id="<s:property value="idSolicitud"/>" 
@@ -158,7 +161,7 @@
                                                                 </a>
                                                              </s:if>
                                                              <s:elseif test="solicitudEstados.idEstado<3">
-                                                                <a href="javascript:deleteRecord();" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete">
+                                                                <a href="javascript:deleteRecord(<s:property value="idSolicitud"/>);" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete">
                                                                  <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                                 </a>
                                                              </s:elseif>
@@ -289,7 +292,17 @@
                 
                 
         } );
+        function deleteRecord(id)
+        {
+            if (confirm('¿Estás seguro que quieres borrar el elemento?')) {
+                alert("Sin implementar");
+                //window.location.href = 'BorrarSolicitud?idSolicitud='+id;
+            }
+        }
        
+        function editarSolicitud(id) {
+            window.location.href = "EditarSolicitud?idSolicitud="+id;
+        }
         // END CODE Individual column searching (text inputs) DATA TABLE 	 	
 	</script>	
 <!-- END Java Script for this page -->

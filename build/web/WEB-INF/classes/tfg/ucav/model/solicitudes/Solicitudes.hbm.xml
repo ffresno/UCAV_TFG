@@ -8,13 +8,13 @@
             <column name="id_solicitud" />
             <generator class="identity" />
         </id>
-        <many-to-one name="provincias" class="tfg.ucav.model.configuracion.provincias.Provincias" lazy="false" cascade="all" fetch="select">
+        <many-to-one name="provincias" class="tfg.ucav.model.configuracion.provincias.Provincias" lazy="false"  fetch="select">
             <column name="id_provincia" not-null="true" />
         </many-to-one>
-        <many-to-one name="solicitudEstados" class="tfg.ucav.model.solicitudes.SolicitudEstados" lazy="false" cascade="all" fetch="select">
+        <many-to-one name="solicitudEstados" class="tfg.ucav.model.solicitudes.SolicitudEstados" lazy="false"  fetch="select">
             <column name="id_estado" not-null="true" />
         </many-to-one>
-        <many-to-one name="users" class="tfg.ucav.model.usuarios.Users" lazy="false" cascade="all" fetch="select">
+        <many-to-one name="users" class="tfg.ucav.model.usuarios.Users" lazy="false" fetch="select">
             <column name="id_user" not-null="true" />
         </many-to-one>
         <property name="nombre" type="string">

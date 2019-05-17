@@ -8,30 +8,31 @@ package tfg.ucav.dao.solicitudes;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import static tfg.ucav.dao.configuracion.provincias.ProvinciasDAO.myConnectionHibernate;
-import tfg.ucav.model.configuracion.provincias.Provincias;
 import tfg.ucav.model.solicitudes.Documentos;
-import tfg.ucav.model.solicitudes.SolicitudDetalle;
 import tfg.ucav.model.solicitudes.SolicitudDocumentos;
 import tfg.ucav.model.solicitudes.SolicitudDocumentosId;
 import tfg.ucav.model.solicitudes.Solicitudes;
-import tfg.ucav.model.usuarios.Users;
 import org.apache.struts2.interceptor.SessionAware;
+import static tfg.ucav.dao.configuracion.cursos.CursosDAO.myconnection;
+import tfg.ucav.dao.configuracion.estadossolicitud.EstadosSolicitudDAO;
+import static tfg.ucav.dao.configuracion.provincias.ProvinciasDAO.myConnectionHibernate;
+import tfg.ucav.model.configuracion.provincias.Provincias;
+import tfg.ucav.model.solicitudes.SolicitudEstados;
+import tfg.ucav.model.usuarios.Users;
+import tfg.ucav.util.Mailer;
 
 /**
  *
@@ -44,6 +45,10 @@ public class SolicitudesDAO implements SessionAware {
     private String saveDirectory;
     private Map<String, Object> session;
     
+    /**
+     *
+     * @param session
+     */
     @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;
@@ -115,7 +120,7 @@ public class SolicitudesDAO implements SessionAware {
    }
     
     /**
-     *
+     * Obtiene las solicitudes de un usuario
      * @param userId
      * @return
      * @throws Exception
@@ -170,6 +175,31 @@ public class SolicitudesDAO implements SessionAware {
              session.close(); 
           }
         return solicitud;
+        
+    }
+    /**
+     * Obtiene todas las solicitudes ordenadas por fecha inversa
+     * @return List
+     * @throws Exception
+     */
+    public List<Solicitudes> getSolicitudes() throws Exception {
+        List listSolicitudes = null;
+        Transaction tx = null; 
+        Session session = myConnectionHibernate();
+        
+        try{
+            tx = session.beginTransaction();
+            Query query = session.createQuery("FROM Solicitudes ORDER BY idSolicitud");
+            listSolicitudes = query.list();
+            tx.commit();
+            System.out.println(listSolicitudes.size());
+          } catch (HibernateException e) {
+             if (tx!=null) tx.rollback();
+             e.printStackTrace(); 
+          } finally {
+             session.close(); 
+          }
+        return listSolicitudes;
         
     }
    
@@ -247,9 +277,9 @@ public class SolicitudesDAO implements SessionAware {
    }
    
     /**
-     *
+     * Actualiza la solicitud
      * @param sol
-     * @return
+     * @return int
      */
     public int updateSolicitud(Solicitudes sol){
         
@@ -271,6 +301,86 @@ public class SolicitudesDAO implements SessionAware {
          session.close(); 
       }
    }
+    
+    /**
+     * Borrar solicitud
+     * @param id
+     * @return int
+     */
+    public int deleteSolicitud(int id){
+        
+      Session session = myConnectionHibernate();
+      Transaction tx = null;
+      
+      try {
+         tx = session.beginTransaction();
+         Solicitudes solicitud = (Solicitudes) session.get(Solicitudes.class, id);
+         session.delete(solicitud); 
+         tx.commit();
+         return 1;
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+         return 0;
+      } finally {
+         session.close(); 
+      }
+   }
+    
+    /**
+     * Borrar solicitud
+     * @param id
+     * @return int
+     */
+    public int acceptSolicitud(int id) throws Exception{
+        
+      Session session = myConnectionHibernate();
+      Transaction tx = null;
+      int ESTADO_SOLICITUD_ACEPTADA = 3;
+      
+      try {
+         tx = session.beginTransaction();
+         Solicitudes solicitud = (Solicitudes) session.get(Solicitudes.class, id);
+         EstadosSolicitudDAO estadosSolicitudDAO = new EstadosSolicitudDAO();
+         SolicitudEstados estadoACEPTADA = estadosSolicitudDAO.getEstadoById(ESTADO_SOLICITUD_ACEPTADA);
+         solicitud.setSolicitudEstados(estadoACEPTADA);
+         session.update(solicitud); 
+         tx.commit();
+         this.sendAcceptEmail(solicitud.getUsers());
+         return 1;
+      } catch (HibernateException e) {
+         if (tx!=null) tx.rollback();
+         e.printStackTrace(); 
+         return 0;
+      } finally {
+         session.close(); 
+      }
+   }
+    
+    public void sendAcceptEmail (Users usuario) {
+        //send email
+        //to,subject,message  
+        String msg = "Estimado " + usuario.getNombre() + " tu solicitud ha sido aceptada.\n "
+                + " Puedes consultar su estado y adjuntar los documentos"
+                + " que se necesitan adjuntar para poder formalizar la matricula.\n"
+                + "\nUn saludo\n";
+        
+        
+        Mailer.send(usuario.getEmail() ,"Solicitud aceptada " , msg);
+    }
+    
+    public void sendRejectEmail (Users usuario, String motivo) {
+        //send email
+        //to,subject,message  
+        String msg = "Estimado " + usuario.getNombre() + " tu solicitud ha sido rechazada.\n "
+                + " Tu solicitud ha sido rechazada por el siguiente motivo:\n"
+                + motivo
+                + "\nUn saludo\n";
+        
+        
+        Mailer.send(usuario.getEmail() ,"Solicitud rechazada" , msg);
+    }
+    
 }
 
 
