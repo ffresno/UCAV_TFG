@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end row -->
+                    <!-- end row 
                     <div class="row">
                         
                           opcion menu = <s:property value="opcionMenu"/>
@@ -87,7 +87,8 @@
                         <br>
                         <s:property value="varUrl" />
                     </div>
-                        <h1><s:property value="intReturnValue"/></h1>
+                   
+                        <h1><s:property value="intReturnValue"/></h1>-->
                         <s:if test="intReturnValue">
                             <div class="row">
                             <s:if test="intReturnValue>0">
@@ -133,7 +134,8 @@
                                                     <tr style="text-transform: uppercase;">
                                                         <td>${status.count}</td>
                                                         <td>
-                                                            <a href="" class="btn btn-primary btn-sm" data-placement="top" data-toggle="tooltip" data-title="Ver Solicitud">
+                                                            
+                                                            <a href="javascript:editarSolicitud(<s:property value="idSolicitud"/>);" class="btn btn-primary btn-sm" data-placement="top" data-toggle="tooltip" data-title="Ver Solicitud">
                                                                  <i class="fas fa-eye"></i> <s:property value="apellidos"/>, <s:property value="nombre"/>
                                                                 </a>
                                                             <br>(<s:property value="provincias.nombre"/>)
@@ -168,7 +170,7 @@
                                                                 <a href="javascript:aceptarSolicitud(<s:property value="idSolicitud"/>);" class="btn btn-success btn-sm" data-placement="top" data-toggle="tooltip" data-title="Aceptar Solicitud">
                                                                 <i class="fas fa-clipboard-check"></i>
                                                                 </a>
-                                                                <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-id="<s:property value="idSolicitud"/>" 
+                                                                <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-id="<s:property value="idSolicitud"/>" 
                                                                    data-target="#modal_introducir_motivo" id="openModalDenegar" title="Anular Solicitud" >
                                                                     <i class="fas fa-times"></i>
                                                                 </a>
@@ -293,6 +295,9 @@
             if (confirm("¿Estás seguro que quieres denegar la solicitud?")) {
                 window.location.href = 'DenegarSolicitud?idSolicitud='+id;
             }
+        }
+         function editarSolicitud(id) {
+            window.location.href = "EditarSolicitud?idSolicitud="+id;
         }
         // END CODE Individual column searching (text inputs) DATA TABLE 	 	
 	</script>	

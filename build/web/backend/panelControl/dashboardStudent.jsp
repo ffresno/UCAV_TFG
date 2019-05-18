@@ -64,7 +64,8 @@
                             </div>
                         </div>
                     </div>
-                    <h1>devuelve:<s:property value="intReturnValue"/></h1>
+                    <!--
+                    <h1>devuelve:<s:property value="intReturnValue"/></h1>-->
                         <s:if test="intReturnValue">
                             <div class="row">
                             <s:if test="intReturnValue>0">
@@ -82,7 +83,7 @@
                             </div>
                         </s:if>
                     
-                    <!-- end row -->
+                    <!-- end row 
                     <div class="row">
                           opcion menu = <s:property value="opcionMenu"/>
                           /
@@ -91,7 +92,7 @@
                             <s:if test="opcionMenu==inicio">
                                 La opcion es inicio
                             </s:if>
-                    </div>
+                    </div>-->
                     
                     
                     
@@ -179,6 +180,54 @@
 
                     </div>			
                     <!-- End Registros pendientes -->
+                    <div class="modal fade" id="avisoSubidaArchivosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <form action="UploadDocumentos" method="POST" enctype="multipart/form-data">
+                         <div class="modal-dialog" role="document">
+                             <div class="modal-content">
+                               <div class="modal-header">
+                                     <h5 class="modal-title" id="exampleModalLabel">Adjuntar documentación</h5>
+                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">&times;</span>
+                                     </button>
+                               </div>
+                               <div class="modal-body">
+                                 <p>Al ser aceptada su solicitud para realizar el curso, puede entregar los documentos en las fechas
+                                     y plazos establecidos para formalizar su solicitud. Prepare los documentos en formato electrónico y
+                                     pulse sobre Aceptar para comenzar a subir los documentos.</p>
+                                     <form action="UploadDocumentos" method="POST" enctype="multipart/form-data">
+                                             <s:iterator value="listDocumentos" var="documento" status="status">
+                                             <!-- inlcuir la carga de archivos -->
+                                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">                     
+                                                     <div class="card mb-3">
+                                                         <div class="card-header">
+                                                             <h6><i class="fa fa-file"></i> DOCUMENTO ${status.count}: <s:property value="nombre"/></h6>
+                                                             <s:property value="descripcion"/>
+                                                         </div>
+
+                                                         <div class="card-body">
+                                                             <!--<input type="file" name="fileUpload" id="fileUpload${status.count}" >-->
+                                                             <input type="file" name="fileUpload" value="" id="fileUpload"/>
+                                                             <!--<s:file label="File 1" name="fileUpload" size="40" />-->
+                                                         </div>                                                      
+                                                     </div><!-- end card-->                  
+                                                 </div>
+                                             </s:iterator>
+                                             <input type="hidden" id="idSolicitud" name="idSolicitud">
+
+
+                                 </div>
+
+                                 <div class="modal-footer">
+                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                     <button class="btn btn-primary" type="submit">
+                                         Adjuntar documentación
+                                     </button>
+                                 </div>
+                             </div>
+                         </div>
+                     </form>
+                     </div>
+
 
                 </div>
                 <!-- END container-fluid -->
@@ -192,65 +241,10 @@
         <s:include value="../../includes/footer.jsp"/>
 
 </div>
+
+
 <!-- Modal -->
-<div class="modal fade" id="avisoSubidaArchivosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Entrega de documentación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-          </div>
-          <div class="modal-body">
-                <p>Al ser aceptada su solicitud para realizar el curso, puede entregar los documentos en las fechas
-                    y plazos establecidos para formalizar su solicitud. Prepare los documentos en formato electrónico y
-                    pulse sobre Aceptar para comenzar a subir los documentos.
-                    </p>
-                    
-                    <form action="UploadDocumentos" method="POST" enctype="multipart/form-data">
-                        <s:iterator value="listDocumentos" var="documento" status="status">
-                        <!-- inlcuir la carga de archivos -->
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">						
-                                <div class="card mb-3">
-                                        <div class="card-header">
-                                                <h6><i class="fa fa-file"></i> DOCUMENTO ${status.count}: <s:property value="nombre"/></h6>
-                                                <s:property value="descripcion"/>
-                                        </div>
 
-                                        <div class="card-body">
-
-                                                <input type="file" name="fileUpload" id="filer_ficheros${status.count}" >
-                                        </div>														
-                                </div><!-- end card-->					
-                            </div>
-                        </s:iterator>
-                        <!--<div class="form-group text-left m-b-0">
-                            <button class="btn btn-primary" type="submit">
-                                Adjuntar documentación
-                            </button>
-                            <a href="javascript:history.back();" class="btn btn-secondary m-l-5">
-                                Cancelar
-                            </a>
-                        </div>-->
-                        <input type="hidden" id="idSolicitud" name="idSolicitud">
-          </div>
-            <!--
-          <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <a class="btn btn-primary" href="IncluirDocumentos" class="btn btn-primary">Aceptar</a>
-          </div>-->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button class="btn btn-primary" type="submit">
-                    Adjuntar documentación
-                </button>
-            </div>
-        </div>
-      
-      </form>
-  </div>
-</div>
 <!-- END main -->
 <s:include value="../../includes/js.jsp"/>
 
@@ -273,13 +267,10 @@
                 $(document).on("click", "#openModalUpload", function () {
                     var idSolicitud = $(this).data('id');
                     $(".modal-body #idSolicitud").val( idSolicitud );
-                    // As pointed out in comments, 
-                    // it is unnecessary to have to manually call the modal.
-                    // $('#addBookDialog').modal('show');
                });
                
                <s:iterator value="listDocumentos" var="documento" status="status">
-                    $('#filer_ficheros${status.count}').filer({
+                    $('#fileUpload${status.count}').filer({
                     limit: <s:property value ="listDocumentos.size()"/>,
                     maxSize: 5,
                     extensions: ['jpg', 'jpeg', 'png', 'gif', 'pdf'],

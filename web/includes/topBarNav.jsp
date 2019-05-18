@@ -22,9 +22,10 @@
         <ul class="list-inline float-right mb-0">
 
             <li class="list-inline-item dropdown notif">
+                <!--
                 <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fa fa-fw fa-question-circle"></i>
-                </a>
+                </a>-->
                 <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-arrow-success dropdown-lg">
                     <!-- item-->
                     <div class="dropdown-item noti-title">

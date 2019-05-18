@@ -24,16 +24,31 @@ import tfg.ucav.model.solicitudes.Solicitudes;
 import tfg.ucav.model.usuarios.Users;
 
 import java.io.File;
+import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import tfg.ucav.dao.configuracion.usuarios.UsuariosDAO;
 
 /**
  *
  * @author fernandofresno
  */
-public class SolicitudesAction extends ActionSupport implements SessionAware {
+public class SolicitudesAction extends ActionSupport implements SessionAware, ServletRequestAware{
+    
+    public File fichero;
+
+    public File getFichero() {
+        return fichero;
+    }
+
+    public void setFichero(File fichero) {
+        this.fichero = fichero;
+    }
+    
+    
     
     int intReturnValue = 0;
     String msg;
+    private HttpServletRequest servletRequest;
     List<Provincias> listProvincias = new ArrayList<>();
     List<Curso> cursosDisponibles = new ArrayList<>();
     ArrayList<Curso> listCursos = new ArrayList<>();  
@@ -64,7 +79,11 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
     public void setFileUploadContentType(String[] fileUploadContentTypes) {
         this.fileUploadContentType = fileUploadContentTypes;
     }
-    
+    @Override
+    public void setServletRequest(HttpServletRequest servletRequest) {
+        this.servletRequest = servletRequest;
+
+    }
     
 
     
@@ -540,8 +559,18 @@ public class SolicitudesAction extends ActionSupport implements SessionAware {
         
         try {
             SolicitudesDAO solicitudDAO = new SolicitudesDAO();
+            /*String rootPath = System.getProperty("catalina.home");
+            File dir = new File(rootPath + File.separator + "FicherosSubidos");
+            if (!dir.exists())
+                dir.mkdirs();*/
+            
+            String filePath = servletRequest.getRealPath("/");
+            
+            //System.out.println("Server path:" + filePath);
+            
             //update solicitud
-            this.setIntReturnValue(solicitudDAO.uploadDocumentos(this.getIdSolicitud(), 
+            this.setIntReturnValue(solicitudDAO.uploadDocumentos(filePath, 
+                                                                this.getIdSolicitud(), 
                                                                 this.getFileUpload(), 
                                                                 this.getFileUploadFileName(),
                                                                 this.getFileUploadContentType()));

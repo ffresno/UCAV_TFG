@@ -237,7 +237,8 @@ public class SolicitudesDAO implements SessionAware {
      * @return 
      * @throws java.lang.Exception 
     */
-   public int uploadDocumentos(int idSolicitud, File[] filesToUpload, String[] fileUploadFileName, String[] fileUploadContentType) throws Exception {
+   public int uploadDocumentos( String filePath, int idSolicitud, File[] filesToUpload, 
+                                String[] fileUploadFileName, String[] fileUploadContentType) throws Exception {
        
        //obtenemos la solicitud
         Set setDocumentosSolicitud = new HashSet(0);
@@ -245,13 +246,16 @@ public class SolicitudesDAO implements SessionAware {
         //Listado de documentos necesarios
         List<Documentos> listDocumentos = this.getDocumentos();
         String pathUsuario = solicitud.getUsers().getEmail();
+        File dir = new File(filePath + pathUsuario);
+        if (!dir.exists())
+            dir.mkdirs();
        // copy the uploaded files into pre-configured location
         for (int i = 0; i < filesToUpload.length; i++) {
             
             File uploadedFile = filesToUpload[i];
             String fileName = fileUploadFileName[i];
             //Default directory/email/filename 
-            String rutaFichero = this.getSaveDirectory() + File.separator + pathUsuario + File.separator + fileName;
+            String rutaFichero = pathUsuario + File.separator + fileName;
             File destFile = new File(rutaFichero);
             try {
                 FileUtils.copyFile(uploadedFile, destFile);

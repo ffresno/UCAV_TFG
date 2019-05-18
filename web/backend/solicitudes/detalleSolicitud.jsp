@@ -67,7 +67,23 @@
 	
  
 	<!-- Left Sidebar -->
-        <s:include value="../../includes/student/leftNavStudent.jsp"/>
+        
+        <%
+            /////////////////////////////////////////
+            //          Access control
+            /////////////////////////////////////////
+            if (session.getAttribute("AccessLevel") == "admin") {
+        %>
+            <s:include value="../../includes/admin/leftNavAdmin.jsp"/>
+        <%
+        } else {
+        %>
+            <s:include value="../../includes/student/leftNavStudent.jsp"/>
+        <%
+            }
+        %>
+       
+         
 	<!-- End Sidebar -->
 
 
@@ -104,7 +120,22 @@
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="detalleSolicitud" role="tabpanel" aria-labelledby="solicitud-tab">
                      <br>
+                     
                     <s:iterator value="listSolicitudes" var="solicitud" status="status">
+                        <p>
+                        <s:if test="solicitudEstados.idEstado==1">
+                            <span class="badge badge-primary"><s:property value="solicitudEstados.nombre"/></span>
+                        </s:if>
+                        <s:elseif test="solicitudEstados.idEstado==2">
+                            <span class="badge badge-danger"><s:property value="solicitudEstados.nombre"/></span>
+                        </s:elseif>
+                        <s:elseif test="solicitudEstados.idEstado==3">
+                            <span class="badge badge-success"><s:property value="solicitudEstados.nombre"/></span>
+                         </s:elseif>
+                         <s:elseif test="solicitudEstados.idEstado==4">
+                            <span class="badge badge-success"><s:property value="solicitudEstados.nombre"/></span>
+                         </s:elseif>
+                       <p>
                         <form action="GuardarSolicitud" method="post" enctype="multipart/form-data" id="solicitud">
                             <div class="row">
 
