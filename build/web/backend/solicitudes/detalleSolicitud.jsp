@@ -371,36 +371,47 @@
                 
                 
                 <div class="tab-pane fade" id="documentos" role="tabpanel" aria-labelledby="documentos-tab">
-                    <br><br>
-                    <div class="table-responsive">
-                        <table id="documentosTable" class="table table-bordered table-hover display">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>DESCRIPCION</th>
-                                    <th>DOCUMENTO APORTADO</th>
-                                </tr>
-                            </thead>									
-                            <tbody>
-                                <s:iterator value="listSolicitudes" var="solicitud" status="status">
-                                    <s:iterator value="solicitudDocumentoses" var="documentos" status="status">
-                                        <tr style="text-transform: uppercase;">
-                                            <td>${status.count}</td>
-                                            <td>
-                                                <s:property value="documentos.nombre"/>
-                                            </td>
-                                             <td>
-                                                 <a href="<s:property value="rutaDocumento"/>" target="_blank">
-                                                 Ver documento
-                                                 </a>
-                                                
-                                            </td>
-                                         </tr>
-                                    </s:iterator>
-                                </s:iterator>
-                            </tbody>
-                        </table>
-                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">						
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h3><i class="fa fa-check-square-o"></i> Documentos adjuntos a la solicitud</h3>
+                                    Documentos que ha adjuntado el estudiante a la solicitud
+                                </div>
+
+                                <div class="card-body">
+
+                    
+                                        <div class="table-responsive">
+                                            <table id="documentosTable" class="table table-bordered table-hover display">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>DESCRIPCION</th>
+                                                        <th>DOCUMENTO APORTADO</th>
+                                                    </tr>
+                                                </thead>									
+                                                <tbody>
+                                                    <s:iterator value="listSolicitudes" var="solicitud" status="status">
+                                                        <s:iterator value="solicitudDocumentoses" var="documentos" status="status">
+                                                            <tr style="text-transform: uppercase;">
+                                                                <td>${status.count}</td>
+                                                                <td>
+                                                                    <s:property value="documentos.nombre"/>
+                                                                </td>
+                                                                 <td>
+                                                                     <a href="<s:property value="rutaDocumento"/>" target="_blank">
+                                                                     <i class="fa fa-eye" aria-hidden="true"></i> Ver documento
+                                                                     </a>
+
+                                                                </td>
+                                                             </tr>
+                                                        </s:iterator>
+                                                    </s:iterator>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                        </div></div></div></div>
                 </div> <!-- fin tab documentos -->
               </div>
             

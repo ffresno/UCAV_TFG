@@ -33,9 +33,7 @@
 		
 <div id="main">
 
-        <s:set var="opcionMenu" value="'inicio'"/>
-        
-    
+        <s:set var="opcionSubMenu" value="'MisSolicitudes'"/>
 	<!-- top bar navigation -->
 	 <s:include value = "../../includes/topBarNav.jsp"/>
 	<!-- End Navigation -->
@@ -125,8 +123,12 @@
                                                     <tr style="text-transform: uppercase;">
                                                         <td>${status.count}</td>
                                                         <td>
-                                                            <s:property value="apellidos"/>, <s:property value="nombre"/>
-                                                            <br>(<s:property value="provincias.nombre"/>)
+                                                            <a href="javascript:editarSolicitud(<s:property value="idSolicitud"/>);" class="btn btn-primary btn-sm">
+                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                 <s:property value="apellidos"/>, <s:property value="nombre"/>
+                                                                <br>(<s:property value="provincias.nombre"/>)
+                                                            </a>
+                                                           
                                                         </td>
                                                         <s:iterator value="solicitudDetalles" var="detalle" status="status">
                                                             <td>
@@ -152,7 +154,7 @@
                                                             <!-- Si el estado es aceptada --> 
                                                            
                                                             <a href="javascript:editarSolicitud(<s:property value="idSolicitud"/>);" class="btn btn-primary btn-sm">
-                                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                                <i class="fa fa-eye" aria-hidden="true"></i>
                                                             </a>
                                                             <s:if test="solicitudEstados.idEstado==3">
                                                                 <a href="IncluirDocumentos" class="btn btn-primary btn-sm" data-toggle="modal" 
@@ -193,7 +195,7 @@
                                <div class="modal-body">
                                  <p>Al ser aceptada su solicitud para realizar el curso, puede entregar los documentos en las fechas
                                      y plazos establecidos para formalizar su solicitud. Prepare los documentos en formato electrónico y
-                                     pulse sobre Aceptar para comenzar a subir los documentos.</p>
+                                     pulse sobre Adjuntar documentación para comenzar a subir los documentos.</p>
                                      <form action="UploadDocumentos" method="POST" enctype="multipart/form-data">
                                              <s:iterator value="listDocumentos" var="documento" status="status">
                                              <!-- inlcuir la carga de archivos -->

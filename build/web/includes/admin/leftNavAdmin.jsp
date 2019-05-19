@@ -36,11 +36,8 @@
                         href="#"><i class="fa fa-fw fa-tv"></i> <span> Configuración </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
                         <li><a href="GestionUsuarios">Usuarios</a></li>
-                        <li><a 
-                                <s:if test="opcionSubMenu==cursos">
-                                    class="active"
-                                </s:if>
-                                href="GestionCursos">Cursos</a></li>
+                        <li>
+                            <a href="GestionCursos">Cursos</a></li>
                         <li><a href="GestionProvincias">Provincias (hibernate) </a></li>
                         <li><a href="GestionEstados">Estados Solicitud (hibernate)</a></li>
                         <li><a href="GestionDocumentos">Documentos a solicitar (hibernate)</a></li>

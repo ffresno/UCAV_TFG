@@ -247,15 +247,16 @@ public class SolicitudesDAO implements SessionAware {
         List<Documentos> listDocumentos = this.getDocumentos();
         String pathUsuario = solicitud.getUsers().getEmail();
         File dir = new File(filePath + pathUsuario);
-        if (!dir.exists())
-            dir.mkdirs();
+            if (!dir.exists())
+                dir.mkdirs();
        // copy the uploaded files into pre-configured location
         for (int i = 0; i < filesToUpload.length; i++) {
             
             File uploadedFile = filesToUpload[i];
             String fileName = fileUploadFileName[i];
             //Default directory/email/filename 
-            String rutaFichero = pathUsuario + File.separator + fileName;
+            String rutaFichero = filePath + pathUsuario + File.separator + fileName;
+            String rutaUrlFichero = pathUsuario + File.separator + fileName;;
             File destFile = new File(rutaFichero);
             try {
                 FileUtils.copyFile(uploadedFile, destFile);
@@ -266,7 +267,7 @@ public class SolicitudesDAO implements SessionAware {
                 solDocId.setIdSolicitud(solicitud.getIdSolicitud());
                 solDoc.setId(solDocId);
                 solDoc.setSolicitudes(solicitud);
-                solDoc.setRutaDocumento(rutaFichero);
+                solDoc.setRutaDocumento(rutaUrlFichero);
                 solDoc.setDocumentos(listDocumentos.get(i));
                 setDocumentosSolicitud.add(solDoc);
             } catch (IOException ex) {

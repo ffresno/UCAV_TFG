@@ -14,15 +14,17 @@
             <ul>
 
                 <li class="submenu">
-                    <a 
-                        <s:if test="opcionMenu==inicio">
-                            class="active"
-                        </s:if>
-                    href="DashboardStudent"><i class="fa fa-fw fa-home"></i> <span> Inicio </span> <span class="menu-arrow"></span></a>
+                    <a class="active" href="DashboardStudent"><i class="fa fa-fw fa-home"></i> <span> Inicio </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="DashboardStudent">Mis Solicitudes</a></li>
-                        <li><a href="NuevaSolicitud">Nueva Solicitud</a></li>
-                        
+                         
+                            <s:if test="opcionSubMenu==MisSolicitudes">
+                                  <li class="active"><a href="DashboardStudent">Mis Solicitudes</a></li>
+                                  <li><a href="NuevaSolicitud">Nueva Solicitud</a></li>
+                            </s:if>
+                            <s:else>
+                                <li><a href="DashboardStudent">Mis Solicitudes</a></li>
+                                <li class="active"><a href="NuevaSolicitud">Nueva Solicitud</a></li>
+                            </s:else>
                     </ul>
                 </li>
 
